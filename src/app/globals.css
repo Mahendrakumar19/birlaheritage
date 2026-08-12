@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+/* ============================================
+   GLOBAL DESIGN TOKENS — Birla Heritage Siwan
+   ============================================ */
+:root {
+  /* ── Brand Colors: Berkeley Blue + California Gold ── */
+  --color-primary: #003262;
+  /* Berkeley Blue — headings, navbars, main UI */
+  --color-primary-light: #0a4d96;
+  /* Lighter Blue — hover states */
+  --color-primary-dark: #001f3d;
+  /* Dark Blue — deep sections */
+
+  --color-accent: #FDB515;
+  /* California Gold — CTAs, highlights, icons */
+  --color-accent-hover: #e5a010;
+  /* Deep Gold — hover on CTAs */
+  --color-accent-light: #fff8e6;
+  /* Pale gold — soft backgrounds */
+
+  --color-secondary: #003262;
+  /* Berkeley Blue — top bar, badges (same as primary) */
+  --color-gold: #FDB515;
+  /* California Gold — top bar, tags */
+
+  /* Neutrals */
+  --color-bg: #ffffff;
+  --color-bg-soft: #f8fafc;
+  --color-bg-muted: #f1f5f9;
+  --color-text: #171717;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+
+  /* Font Families */
+  --font-heading: var(--font-montserrat), 'Montserrat', sans-serif;
+  --font-body: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* All headings → Montserrat globally */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+/* ============================================
+   MARQUEE ANIMATION
+   ============================================ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   GLOBAL BRAND UTILITY CLASSES
+   (Sync brand colors & Montserrat font everywhere)
+   ============================================ */
+
+/* --- Color Utilities --- */
+.brand-primary {
+  color: var(--color-primary);
+}
+
+.brand-accent {
+  color: var(--color-accent);
+}
+
+.brand-gold {
+  color: var(--color-gold);
+}
+
+.brand-secondary {
+  color: var(--color-secondary);
+}
+
+.bg-brand-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-brand-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-brand-gold {
+  background-color: var(--color-gold);
+}
+
+.bg-brand-secondary {
+  background-color: var(--color-secondary);
+}
+
+/* --- Typography Utilities --- */
+.heading-xl {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  /* Sleeker font weight */
+  color: #111111;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.heading-lg {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: #111111;
+  line-height: 1.2;
+}
+
+.heading-md {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: #111111;
+  line-height: 1.3;
+}
+
+/* Section label / eyebrow text above headings */
+.section-eyebrow {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  /* Wide tracking */
+  text-transform: uppercase;
+  color: #4b5563;
+  /* Dark grey/black for subheading */
+}
+
+/* CTA Buttons */
+.btn-primary {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 0.75rem 2rem;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 4px 16px rgba(253, 181, 21, 0.4);
+}
+
+.btn-outline-primary {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: 4px;
+  padding: 0.7rem 2rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Section divider accent line */
+.accent-line {
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
