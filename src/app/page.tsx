@@ -3,7 +3,6 @@
 import HeroSection from "@/components/HeroSection";
 import About from "@/components/About";
 import MessagesSection from "@/components/MessagesSection";
-import StatsSection from "@/components/StatsSection";
 import CoursesSection from "@/components/CoursesSection";
 import ObjectivesSection from "@/components/ObjectivesSection";
 import EventsSection from "@/components/EventsSection";
@@ -18,7 +17,6 @@ export default function Home() {
       <HeroSection />
       <About />
       <MessagesSection />
-      <StatsSection />
       <CoursesSection />
       <ObjectivesSection />
       <EventsSection />
