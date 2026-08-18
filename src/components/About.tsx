@@ -44,13 +44,7 @@ export default function About() {
               </pattern>
               <rect x="0" y="0" width="100" height="100" fill="url(#lines)" />
             </motion.svg>
-            <motion.svg
-              animate={{ rotate: 360, y: [0, -10, 0] }}
-              transition={{ rotate: { duration: 20, repeat: Infinity, ease: "linear" }, y: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
-              className="absolute top-1/2 -left-20 w-12 h-12 text-[#003262] z-0 hidden md:block origin-center" viewBox="0 0 24 24" fill="currentColor"
-            >
-              <path d="M24 12L0 24V0L24 12Z" />
-            </motion.svg>
+
             <motion.svg
               animate={{ rotate: -360, scale: [1, 1.1, 1] }}
               transition={{ rotate: { duration: 15, repeat: Infinity, ease: "linear" }, scale: { duration: 3, repeat: Infinity, ease: "easeInOut" } }}

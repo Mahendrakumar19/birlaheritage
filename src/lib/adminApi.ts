@@ -129,6 +129,62 @@ export const adminApi = {
       request(`/api/disclosures/${id}`, { method: 'PATCH', body: form }, true),
     delete: (id: string) =>
       request(`/api/disclosures/${id}`, { method: 'DELETE' }),
+  },
+
+  // Events
+  events: {
+    list:   (params = '') => request(`/api/events?${params}`),
+    get:    (id: number)  => request(`/api/events/${id}`),
+    create: (body: object) =>
+      request('/api/events', { method: 'POST', body: JSON.stringify(body) }),
+    update: (id: number, body: object) =>
+      request(`/api/events/${id}`, { method: 'PATCH', body: JSON.stringify(body) }),
+    toggle: (id: number) =>
+      request(`/api/events/${id}/toggle`, { method: 'PATCH' }),
+    delete: (id: number) =>
+      request(`/api/events/${id}`, { method: 'DELETE' }),
+  },
+
+  // Leadership Profiles
+  leadership: {
+    list:   (params = '') => request(`/api/leadership?${params}`),
+    get:    (id: number)  => request(`/api/leadership/${id}`),
+    create: (body: object) =>
+      request('/api/leadership', { method: 'POST', body: JSON.stringify(body) }),
+    update: (id: number, body: object) =>
+      request(`/api/leadership/${id}`, { method: 'PATCH', body: JSON.stringify(body) }),
+    toggle: (id: number) =>
+      request(`/api/leadership/${id}/toggle`, { method: 'PATCH' }),
+    delete: (id: number) =>
+      request(`/api/leadership/${id}`, { method: 'DELETE' }),
+  },
+
+  // Testimonials
+  testimonials: {
+    list:   (params = '') => request(`/api/testimonials?${params}`),
+    get:    (id: number)  => request(`/api/testimonials/${id}`),
+    create: (body: object) =>
+      request('/api/testimonials', { method: 'POST', body: JSON.stringify(body) }),
+    update: (id: number, body: object) =>
+      request(`/api/testimonials/${id}`, { method: 'PATCH', body: JSON.stringify(body) }),
+    toggle: (id: number) =>
+      request(`/api/testimonials/${id}/toggle`, { method: 'PATCH' }),
+    delete: (id: number) =>
+      request(`/api/testimonials/${id}`, { method: 'DELETE' }),
+  },
+
+  // Achievements
+  achievements: {
+    list:   (params = '') => request(`/api/achievements?${params}`),
+    get:    (id: number)  => request(`/api/achievements/${id}`),
+    create: (body: object) =>
+      request('/api/achievements', { method: 'POST', body: JSON.stringify(body) }),
+    update: (id: number, body: object) =>
+      request(`/api/achievements/${id}`, { method: 'PATCH', body: JSON.stringify(body) }),
+    toggle: (id: number) =>
+      request(`/api/achievements/${id}/toggle`, { method: 'PATCH' }),
+    delete: (id: number) =>
+      request(`/api/achievements/${id}`, { method: 'DELETE' }),
   }
 };
 

@@ -45,6 +45,26 @@ export default function AdminSidebar({ newAdmissions = 0, newContacts = 0, onClo
       icon: <NavIcon d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />,
     },
     {
+      label: "Events",
+      href: "/admin/events",
+      icon: <NavIcon d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />,
+    },
+    {
+      label: "Leadership Profiles",
+      href: "/admin/leadership",
+      icon: <NavIcon d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />,
+    },
+    {
+      label: "Testimonials",
+      href: "/admin/testimonials",
+      icon: <NavIcon d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />,
+    },
+    {
+      label: "Student Achievements",
+      href: "/admin/achievements",
+      icon: <NavIcon d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />,
+    },
+    {
       label: "Admissions",
       href: "/admin/admissions",
       badge: newAdmissions,

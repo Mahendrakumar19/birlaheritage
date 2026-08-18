@@ -1,176 +1,184 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import HomeNavbar from "@/components/HomeNavbar";
 import Footer from "@/components/Footer";
 
 export default function LeadershipPage() {
   const leaders = [
     {
-      role: "Chairman's Message",
+      role: "Chairman's Office",
       name: "Nitya Singh",
+      designation: "Chairman",
       image: "/chairman_placeholder.jpeg",
       reverse: false,
-      quote: "Education is the manifestation of perfection already in man, as Swami Vivekananda once said.",
-      description: (
+      quote: "Education is the manifestation of perfection already in man.",
+      bio: "Nitya Singh is a seasoned technology leader with 16 years of management experience at Microsoft. She holds a post-graduate degree in Computer Science from Hyderabad Central University, where she graduated with distinction. Currently managing engineering teams at Microsoft, she is passionate about creating innovative solutions and mentoring young professionals.",
+      message: (
         <>
           <p className="mb-4">
-            At Birla Heritage International School Siwan, we have taken it upon ourselves to unlock this latent perfection and talent in every child under our care.
-          </p>
-          <p className="mb-4">
-            Nitya Singh is a software professional with 16 years of experience in Microsoft, one of the world&apos;s leading technology companies. She has a post-graduate degree in Computer Science from Hyderabad Central University, where she graduated with distinction. She is currently working as a Manager in Microsoft, leading a team of talented developers and engineers.
+            &ldquo;Education is the manifestation of perfection already in man,&rdquo; as Swami Vivekananda once said. At Birla Heritage International School Siwan, we have taken it upon ourselves to unlock this latent perfection and talent in every child under our care.
           </p>
           <p>
-            Nitya Singh has a passion for creating innovative solutions that can improve the lives of millions of people. She has been involved in various projects and is recognized for her outstanding contributions and leadership. She is also a mentor and coach for aspiring software professionals, helping them to achieve their goals and dreams.
+            Our vision is to empower young minds with knowledge, character, and 21st-century skills, preparing them to excel in an interconnected global world while remaining grounded in our rich cultural values.
           </p>
         </>
       ),
     },
     {
-      role: "Director's Message",
+      role: "Director's Office",
       name: "Subash Singh",
+      designation: "Director",
       image: "/team_placeholder.jpeg",
       reverse: true,
-      quote: "Giving kids a smooth learning environment so they can reach their greatest potential.",
-      description: (
+      quote: "Giving children a smooth learning environment so they can reach their greatest potential.",
+      bio: "Subash Singh guides the institutional development and strategic growth of Birla Heritage International School Siwan, focusing on inclusive learning and student-centric facilities.",
+      message: (
         <>
           <p className="mb-4">
             The goal of Birla Heritage International School Siwan is to give kids a smooth learning environment so they can reach their greatest potential. We wanted to offer something special where a child can examine all options before starting the journey of academic learning.
           </p>
           <p>
-            As there are so many schools popping up all over the place but they are all limited to a certain area of learning approach. In order to ensure that a person&apos;s creativity and learning are unrestricted, we sought to maintain the formative years as open and inclusive as possible.
+            In order to ensure that a person&apos;s creativity and learning are unrestricted, we sought to maintain the formative years as open and inclusive as possible.
           </p>
+        </>
+      ),
+    },
+    {
+      role: "Principal's Office",
+      name: "[Principal Information Pending]",
+      designation: "Principal",
+      image: "/team_placeholder.jpeg",
+      reverse: false,
+      isPlaceholder: true,
+      quote: "Fostering academic excellence, character development, and future-ready skills in every learner.",
+      bio: "Academic Leadership & School Administration.",
+      message: (
+        <>
+          <p className="mb-4">
+            Welcome to Birla Heritage International School Siwan. Our school is committed to nurturing curiosity, intellectual growth, and strong ethical values in every student.
+          </p>
+          <div className="p-4 bg-amber-50 border border-amber-200 text-amber-900 text-xs md:text-sm rounded font-medium">
+            <strong>Official Content Notice:</strong> Official Principal name, designation, message copy, and portrait photograph are pending final content delivery from school administration.
+          </div>
         </>
       ),
     }
   ];
 
   return (
-    <main className="min-h-screen bg-[#fcfcfc] flex flex-col font-sans selection:bg-[#003262] selection:text-white">
+    <main className="min-h-screen bg-[#fcfcfc] flex flex-col font-sans">
       <HomeNavbar />
 
       {/* Hero Section */}
-      <section className="relative w-full h-[400px] md:h-[550px] mt-[100px] flex flex-col justify-center items-center overflow-hidden">
+      <section className="relative w-full h-[380px] md:h-[480px] mt-[100px] flex flex-col justify-center items-center overflow-hidden bg-[#003262]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/about_main.png"
             fill
-            className="object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite]"
+            className="object-cover object-center scale-105"
             alt="Leadership Banner"
             priority
             unoptimized
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111111]/90 via-[#111111]/70 to-[#003262]/40 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001f3d]/90 via-[#003262]/80 to-[#003262]/60 mix-blend-multiply" />
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8 text-center md:text-left">
-          <div className="inline-block mb-4 px-4 py-1.5 bg-[#FDB515]/20 backdrop-blur-md border border-[#FDB515]/30 rounded-full">
-            <span className="text-[#FDB515] font-semibold tracking-wider text-sm uppercase">Guiding the Future</span>
+        <div className="relative z-10 container-custom text-center md:text-left">
+          <div className="inline-block mb-3 px-4 py-1.5 bg-[#FDB515]/20 backdrop-blur-md border border-[#FDB515]/30 rounded-full">
+            <span className="text-[#FDB515] font-bold tracking-wider text-xs md:text-sm uppercase">Guiding the Future</span>
           </div>
-          <h1 className="text-white text-5xl md:text-7xl font-bold tracking-tight mb-4 drop-shadow-xl" style={{ fontFamily: 'var(--font-heading)' }}>
-            Our Leaders & Advisors
+          <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 drop-shadow-xl" style={{ fontFamily: 'var(--font-heading)' }}>
+            Leadership & Governance
           </h1>
-          <p className="text-white/80 text-lg md:text-xl max-w-2xl font-light">
+          <p className="text-white/90 text-base md:text-xl max-w-2xl font-light leading-relaxed">
             Meet the visionaries who inspire excellence and shape the future of Birla Heritage International School Siwan.
           </p>
         </div>
 
-        {/* Decorative Bottom Wave/Curve (Optional, just using a gradient transition for now) */}
-        <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#fcfcfc] to-transparent z-20"></div>
+        {/* Decorative Bottom Fade */}
+        <div className="absolute bottom-0 w-full h-16 bg-gradient-to-t from-[#fcfcfc] to-transparent z-20" />
       </section>
 
       {/* Leadership Content Section */}
-      <section className="py-12 md:py-16 px-4 md:px-8 max-w-7xl mx-auto w-full flex-1">
-
-        <div className="flex flex-col gap-12 md:gap-16">
+      <section className="py-16 md:py-24 container-custom flex-1">
+        <div className="flex flex-col gap-16 md:gap-24">
           {leaders.map((leader, index) => (
             <div
               key={index}
-              className={`flex flex-col ${leader.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center group`}
+              className={`flex flex-col ${leader.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-16 items-start group`}
             >
 
               {/* Image Container */}
-              <div className="w-full lg:w-5/12 shrink-0 relative">
-                {/* Decorative background shape */}
-                <div className={`absolute top-4 ${leader.reverse ? '-left-4' : '-right-4'} w-full h-full bg-[#003262]/10 rounded-sm transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0 -z-10`}></div>
-
-                <div className="relative w-full aspect-[4/5] md:aspect-[3/4] rounded-sm overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl">
-                  {/* Subtle overlay */}
-                  <div className="absolute inset-0 bg-[#003262]/5 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+              <div className="w-full lg:w-4/12 shrink-0 relative">
+                <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow-lg border border-gray-200">
                   <Image
                     src={leader.image}
                     alt={leader.name}
                     fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
-
-                  {/* Glassmorphism Name Tag (visible on small screens or as a stylistic element) */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur-md p-3 rounded-sm border border-white/40 shadow-md z-20 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 lg:hidden">
-                    <p className="text-[#003262] font-bold text-xs uppercase tracking-wider mb-1">{leader.role}</p>
-                    <p className="text-gray-900 font-bold text-lg">{leader.name}</p>
-                  </div>
+                  {leader.isPlaceholder && (
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-4 text-center">
+                      <span className="badge-gold text-xs">Official Photo Pending</span>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Text Container */}
-              <div className="w-full lg:w-7/12 flex flex-col justify-center">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="w-12 h-[2px] bg-[#FDB515]"></span>
-                  <h3 className="text-[#FDB515] font-bold tracking-widest uppercase text-sm md:text-base">
+              <div className="w-full lg:w-8/12 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="w-8 h-[2px] bg-[#FDB515]" />
+                  <h3 className="text-[#FDB515] font-bold tracking-widest uppercase text-xs md:text-sm">
                     {leader.role}
                   </h3>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl text-[#003262] font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+                <h2 className="text-3xl md:text-4xl text-[#003262] font-bold mb-1" style={{ fontFamily: 'var(--font-heading)' }}>
                   {leader.name}
                 </h2>
+                <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-5">{leader.designation}</p>
 
-                <div className="relative mb-6">
-                  {/* Large Quote Icon Background */}
-                  <svg className="absolute -top-4 -left-4 w-12 h-12 text-[#FDB515]/20 -z-10 transform -rotate-6" fill="currentColor" viewBox="0 0 32 32">
-                    <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2h4V8h-4zm14 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2h4V8h-4z" />
-                  </svg>
-                  <h4 className="text-lg md:text-xl text-[#003262]/80 font-medium italic leading-relaxed">
-                    &ldquo;{leader.quote}&rdquo;
-                  </h4>
+                {/* Profile / Bio Summary */}
+                <div className="mb-6 bg-gray-50 p-4 rounded border-l-4 border-[#003262]">
+                  <h4 className="text-[#003262] font-bold text-xs uppercase tracking-wider mb-1">Profile Overview</h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">{leader.bio}</p>
                 </div>
 
-                <div className="text-gray-700 text-sm md:text-base leading-relaxed font-light text-justify">
-                  {leader.description}
+                {/* Formal Message */}
+                <div>
+                  <h4 className="text-[#003262] font-bold text-xs uppercase tracking-wider mb-2">Message to the Community</h4>
+                  <div className="text-gray-700 text-sm md:text-base leading-relaxed space-y-4">
+                    {leader.message}
+                  </div>
                 </div>
 
-                {/* Optional subtle interactive element */}
-                <div className="mt-6 pt-4 border-t border-gray-200 flex items-center">
-                  <a href={`mailto:info@birlaheritage.com?subject=Message for ${leader.name}`} className="inline-flex items-center gap-2 text-[#003262] font-semibold hover:text-[#FDB515] transition-colors duration-300 group/link">
-                    Connect with {leader.name.split(' ')[0]}
-                    <svg className="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </a>
-                </div>
               </div>
 
             </div>
           ))}
         </div>
-
       </section>
 
-      {/* Bottom CTA / Banner */}
-      <section className="w-full py-12 md:py-16 bg-[#003262] text-white text-center px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+      {/* Bottom Admissions CTA */}
+      <section className="w-full py-16 bg-[#003262] text-white text-center px-4 border-t-4 border-[#FDB515]">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
           Join Our Vision
         </h2>
-        <p className="text-white/80 max-w-2xl mx-auto text-base md:text-lg mb-8">
+        <p className="text-white/80 max-w-xl mx-auto text-sm md:text-base mb-6">
           Experience the extraordinary learning environment cultivated by our dedicated leadership team.
         </p>
-        <a href="/admissions" className="inline-block bg-[#FDB515] hover:bg-white text-[#003262] font-bold py-3 px-8 rounded-sm transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
-          Apply for Admissions
-        </a>
+        <Link href="/admissions" className="btn-primary text-sm font-bold px-8 py-3.5">
+          Apply for Admissions &rarr;
+        </Link>
       </section>
 
       <Footer />
     </main>
   );
 }
+

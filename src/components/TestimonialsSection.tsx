@@ -2,14 +2,19 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Rahul Sharma",
-    role: "B.A. Student",
-    image: "/test_student_1_1785833398588.png",
-    text: "This is the greatest educational experience I have had to date. It is incredibly interactive and the faculty genuinely cares about our growth. Every lecture feels like a step forward towards my career goals. I never thought learning could be this engaging and practical.",
-  },
+const BACKEND_URL =
+  (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')) ||
+  'http://localhost:5000';
+
+interface DisplayTestimonial {
+  id: number;
+  name: string;
+  role: string;
+  image: string;
+  text: string;
+}
+
+const STATIC_TESTIMONIALS: DisplayTestimonial[] = [
   {
     id: 2,
     name: "Priya Sharma",
@@ -34,22 +39,43 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
+  const [testimonials, setTestimonials] = useState<DisplayTestimonial[]>(STATIC_TESTIMONIALS);
   const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    fetch(`${BACKEND_URL}/api/testimonials/public`, { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          const live: DisplayTestimonial[] = json.data.map((item: { id: number; name: string; role: string; quote: string; imagePath?: string }) => ({
+            id: item.id,
+            name: item.name,
+            role: item.role,
+            image: item.imagePath || "/parent_avatar_1.png",
+            text: item.quote,
+          }));
+          setTestimonials(live);
+        }
+      })
+      .catch(() => {
+        // Fallback to static testimonials on network error
+      });
+  }, []);
+
   const total = testimonials.length;
 
   const prev = () => setCurrent((c) => (c - 1 + total) % total);
   const next = () => setCurrent((c) => (c + 1) % total);
 
-  // Auto-slide every 3 seconds
+  // Auto-slide every 3.5 seconds
   useEffect(() => {
+    if (total <= 1) return;
     const timer = setInterval(() => {
       setCurrent((c) => (c + 1) % total);
-    }, 3000);
+    }, 3500);
     return () => clearInterval(timer);
   }, [total]);
 
-  // Show 1 on mobile, 2 on md, 4 on lg
-  // We'll show a window of cards starting from current index
   return (
     <section className="w-full py-20 bg-[#EBE9DE] relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-20">
@@ -81,13 +107,12 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Sliding Cards - desktop 4 visible, slide by 1 */}
+        {/* Sliding Cards */}
         <div className="relative overflow-hidden">
           <div
             className="flex gap-5 transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(calc(-${current} * (320px + 20px)))` }}
           >
-            {/* Duplicate cards for infinite loop feel */}
             {[...testimonials, ...testimonials].map((item, idx) => (
               <div
                 key={idx}
@@ -98,7 +123,7 @@ export default function TestimonialsSection() {
                   {/* Profile Row */}
                   <div className="flex items-center gap-3 px-2 pt-2 mb-4">
                     <div className="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 border border-[#d0cec2]">
-                      <Image src={item.image} alt={item.name} fill className="object-cover" />
+                      <Image src={item.image} alt={item.name} fill sizes="36px" className="object-cover" unoptimized />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-[13px] font-bold text-[#111] leading-tight">{item.name}</span>
@@ -109,7 +134,7 @@ export default function TestimonialsSection() {
                   {/* Quote Box */}
                   <div className="bg-[#FAF9F5] rounded-xl flex-1 p-5 shadow-sm overflow-hidden">
                     <p className="font-serif text-[14px] leading-relaxed text-[#2B2B29]">
-                      "{item.text}"
+                      &quot;{item.text}&quot;
                     </p>
                   </div>
 

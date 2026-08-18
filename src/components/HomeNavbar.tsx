@@ -26,13 +26,51 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 const navLinks = [
   { name: "Home", href: "/" },
   {
-    name: "About Us",
-    href: "#",
+    name: "About",
+    href: "/about-us",
     subMenu: [
-      { name: "Philosophy", href: "/about-us/philosophy" },
-      { name: "Leadership", href: "/about-us/leadership" },
+      { name: "About the School", href: "/about-us" },
+      { name: "Vision, Mission & Ethos", href: "/about-us/philosophy" },
+      { name: "Educational Philosophy", href: "/about-us/philosophy" },
+      { name: "Leadership Messages", href: "/about-us/leadership" },
       { name: "Mandatory Disclosure", href: "/about-us/mandatory-disclosure" },
-      { name: "Curriculum", href: "/about-us/curriculum" },
+    ],
+  },
+  {
+    name: "Academics",
+    href: "/about-us/curriculum",
+    subMenu: [
+      { name: "Curriculum Framework", href: "/about-us/curriculum" },
+      { name: "Pre-Primary & Primary", href: "/about-us/curriculum" },
+      { name: "Middle School & Class 9", href: "/about-us/curriculum" },
+    ],
+  },
+  {
+    name: "Campus Life",
+    href: "/campus-life",
+    subMenu: [
+      { name: "Campus Life Overview", href: "/campus-life" },
+      { name: "Infrastructure & Facilities", href: "/campus-life#infrastructure" },
+      { name: "Sports & Activities", href: "/campus-life#sports" },
+      { name: "Student Community", href: "/gallery/students-corner" },
+      { name: "Campus Gallery", href: "/gallery/campus" },
+    ],
+  },
+  {
+    name: "Achievements",
+    href: "/gallery",
+    subMenu: [
+      { name: "Gallery & Event Highlights", href: "/gallery" },
+      { name: "Student Excellence", href: "/gallery/students-corner" },
+    ],
+  },
+  {
+    name: "Media",
+    href: "/gallery",
+    subMenu: [
+      { name: "Photo Gallery Studio", href: "/gallery" },
+      { name: "Campus Photo Archives", href: "/gallery/campus" },
+      { name: "Student's Corner", href: "/gallery/students-corner" },
     ],
   },
   {
@@ -43,15 +81,7 @@ const navLinks = [
       { name: "Admission Process", href: "/admission-process" },
     ],
   },
-  {
-    name: "Gallery",
-    href: "/gallery",
-    subMenu: [
-      { name: "Campus", href: "/gallery/campus" },
-      { name: "Student's Corner", href: "/gallery/students-corner" },
-    ],
-  },
-  { name: "Contact Us", href: "/contact-us" },
+  { name: "Contact", href: "/contact-us" },
 ];
 
 const socialLinks = [
@@ -158,8 +188,8 @@ export default function HomeNavbar() {
       {/* ─── TOP INFO BAR ─── */}
       <div className={`absolute top-0 left-0 right-0 z-30 w-full h-10 flex overflow-hidden ${montserrat.className}`}>
         {/* Social Icons — hidden on very small screens */}
-        <div className="hidden sm:flex bg-[#FDB515] px-3 md:px-8 items-center gap-2 shrink-0">
-          <span className="text-white font-semibold text-[12px] whitespace-nowrap hidden md:inline">Follow Us:</span>
+        <div className="hidden sm:flex bg-[#FDB515] px-3 md:px-6 items-center gap-2 shrink-0">
+          <span className="text-[#003262] font-bold text-[11px] uppercase tracking-wider whitespace-nowrap hidden md:inline">Follow Us:</span>
           {socialLinks.map((s) => (
             <a
               key={s.label}
@@ -167,7 +197,7 @@ export default function HomeNavbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="bg-[#003262] text-white p-1 rounded-full hover:bg-white hover:text-[#FDB515] transition-all duration-200 flex items-center justify-center w-6 h-6"
+              className="bg-[#003262] text-white p-1 rounded-full hover:bg-white hover:text-[#003262] transition-all duration-200 flex items-center justify-center w-6 h-6"
             >
               {s.icon}
             </a>
@@ -175,7 +205,7 @@ export default function HomeNavbar() {
         </div>
 
         {/* Contact & Marquee */}
-        <div className="bg-[#003262] flex-1 px-3 md:px-8 flex items-center justify-between text-white overflow-hidden">
+        <div className="bg-[#003262] flex-1 px-3 md:px-6 flex items-center justify-between text-white overflow-hidden">
           <div className="flex items-center gap-3 h-full overflow-hidden flex-1 min-w-0">
             <a href="tel:+919122899149" className="flex items-center gap-1.5 text-[12px] md:text-sm font-medium hover:text-[#FDB515] whitespace-nowrap shrink-0 transition-colors">
               <svg className="w-3.5 h-3.5 text-[#FDB515]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -230,7 +260,7 @@ export default function HomeNavbar() {
         className={`fixed left-0 right-0 z-40 w-full transition-all duration-300 bg-[#003262] border-b-[4px] border-[#FDB515] ${montserrat.className} ${scrolled ? "top-0 shadow-lg" : "top-10 shadow-sm"
           }`}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between gap-2 lg:gap-4">
           {/* Logo */}
           <Link href="/" className="flex items-center no-underline shrink-0" onClick={closeSidebar}>
             <Image
@@ -250,22 +280,22 @@ export default function HomeNavbar() {
                 <div key={item.name} className="relative group flex items-stretch">
                   <Link
                     href={item.href || "#"}
-                    className="flex items-center gap-1 px-4 lg:px-5 py-4 text-[15px] font-semibold text-white hover:bg-[#FDB515] hover:text-white transition-colors duration-200 no-underline border-r border-white/20"
+                    className="flex items-center gap-1 px-3.5 xl:px-4 py-4 text-[13.5px] xl:text-[14.5px] font-semibold text-white hover:bg-[#FDB515] hover:text-[#003262] transition-colors duration-200 no-underline border-r border-white/20"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
                     {item.name}
-                    <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
                     </svg>
                   </Link>
                   {/* Dropdown */}
-                  <div className="absolute top-[100%] left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-[240px]">
+                  <div className="absolute top-[100%] left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-[230px]">
                     <div className="bg-[#003262] shadow-2xl border-t-0 border border-[#FDB515] overflow-hidden rounded-b-md">
                       {item.subMenu.map((sub) => (
                         <Link
                           key={sub.name}
                           href={sub.href}
-                          className="block px-5 py-3.5 text-[14.5px] font-medium text-white hover:bg-[#FDB515] hover:text-white border-b border-white/20 last:border-b-0 transition-all duration-150 no-underline"
+                          className="block px-4 py-3 text-[13.5px] font-medium text-white hover:bg-[#FDB515] hover:text-[#003262] border-b border-white/20 last:border-b-0 transition-all duration-150 no-underline"
                         >
                           {sub.name}
                         </Link>
@@ -277,7 +307,7 @@ export default function HomeNavbar() {
                 <Link
                   key={item.name}
                   href={item.href!}
-                  className="flex items-center px-4 lg:px-5 py-4 text-[15px] font-semibold text-white hover:bg-[#FDB515] hover:text-white transition-colors duration-200 no-underline border-r border-white/20"
+                  className="flex items-center px-3.5 xl:px-4 py-4 text-[13.5px] xl:text-[14.5px] font-semibold text-white hover:bg-[#FDB515] hover:text-[#003262] transition-colors duration-200 no-underline border-r border-white/20"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   {item.name}

@@ -171,6 +171,108 @@ function migrate() {
     );
   `);
 
+  // ── Events ───────────────────────────────────────────────────────────────────
+  db.run(`
+    CREATE TABLE IF NOT EXISTS events (
+      id                INTEGER PRIMARY KEY AUTOINCREMENT,
+      title             TEXT NOT NULL,
+      category          TEXT NOT NULL DEFAULT 'Cultural',
+      event_date        TEXT NOT NULL,
+      short_description TEXT NOT NULL,
+      description       TEXT,
+      cover_image       TEXT,
+      gallery_album_id  TEXT,
+      is_published      INTEGER NOT NULL DEFAULT 1,
+      sort_order        INTEGER NOT NULL DEFAULT 0,
+      created_at        TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at        TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+  `);
+
+  db.run(`
+    CREATE INDEX IF NOT EXISTS idx_events_published
+      ON events (is_published);
+  `);
+
+  // ── Leadership Profiles ──────────────────────────────────────────────────────
+  db.run(`
+    CREATE TABLE IF NOT EXISTS leadership_profiles (
+      id             INTEGER PRIMARY KEY AUTOINCREMENT,
+      name           TEXT NOT NULL,
+      designation    TEXT NOT NULL,
+      role_tag       TEXT NOT NULL,
+      image_path     TEXT NOT NULL,
+      bio            TEXT NOT NULL,
+      message        TEXT NOT NULL,
+      sort_order     INTEGER NOT NULL DEFAULT 0,
+      is_placeholder INTEGER NOT NULL DEFAULT 0,
+      is_published   INTEGER NOT NULL DEFAULT 1,
+      created_at     TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at     TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+  `);
+
+  db.run(`
+    CREATE INDEX IF NOT EXISTS idx_leadership_published
+      ON leadership_profiles (is_published);
+  `);
+
+  // ── Testimonials ─────────────────────────────────────────────────────────────
+  db.run(`
+    CREATE TABLE IF NOT EXISTS testimonials (
+      id           INTEGER PRIMARY KEY AUTOINCREMENT,
+      name         TEXT NOT NULL,
+      role         TEXT NOT NULL,
+      quote        TEXT NOT NULL,
+      image_path   TEXT NOT NULL,
+      rating       INTEGER NOT NULL DEFAULT 5,
+      sort_order   INTEGER NOT NULL DEFAULT 0,
+      is_published INTEGER NOT NULL DEFAULT 1,
+      created_at   TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at   TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+  `);
+
+  db.run(`
+    CREATE INDEX IF NOT EXISTS idx_testimonials_published
+      ON testimonials (is_published);
+  `);
+
+  // ── Student Achievements ──────────────────────────────────────────────────────
+  db.run(`
+    CREATE TABLE IF NOT EXISTS achievements (
+      id               INTEGER PRIMARY KEY AUTOINCREMENT,
+      student_name     TEXT NOT NULL,
+      grade            TEXT NOT NULL,
+      title            TEXT NOT NULL,
+      category         TEXT NOT NULL DEFAULT 'Academic',
+      achievement_date TEXT NOT NULL,
+      description      TEXT,
+      image_path       TEXT,
+      is_published     INTEGER NOT NULL DEFAULT 1,
+      sort_order       INTEGER NOT NULL DEFAULT 0,
+      created_at       TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at       TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+  `);
+
+  db.run(`
+    CREATE INDEX IF NOT EXISTS idx_achievements_published
+      ON achievements (is_published);
+  `);
+
+  // Seed initial admin user if table is empty
+  const countRow = get(`SELECT COUNT(*) AS total FROM admin_users`);
+  if (Number(countRow?.total || 0) === 0) {
+    const bcrypt = require('bcryptjs');
+    const hash = bcrypt.hashSync('Password@123', 10);
+    run(
+      `INSERT INTO admin_users (username, email, password_hash, full_name, role)
+       VALUES (?, ?, ?, ?, ?)`,
+      ['admin', 'admin@birlaheritage.com', hash, 'System Administrator', 'super_admin']
+    );
+  }
+
   persist();
 }
 

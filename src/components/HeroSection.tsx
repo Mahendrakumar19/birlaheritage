@@ -2,13 +2,14 @@
 import React, { useState } from "react";
 import HomeNavbar from "@/components/HomeNavbar";
 import Image from "next/image";
+import Link from "next/link";
 
 const heroSlides = [
   {
     image: "https://birlaheritagesiwan.com/uploads/gallery/gallery_b363d145-55b1-48dc-aad3-4e860c6cbbd7.jpg",
-    subtitle: "",
-    title: "",
-    desc: ""
+    subtitle: "BIRLA HERITAGE INTERNATIONAL SCHOOL",
+    title: "Empowering Minds,\nShaping Future Leaders",
+    desc: "Fostering academic excellence, character, and 21st-century skills in Siwan, Bihar."
   },
   {
     image: "https://birlaheritagesiwan.com/uploads/gallery/gallery_14d0881e-104e-4a49-9592-6878f54394d9.jpg",
@@ -61,7 +62,7 @@ export default function HeroSection() {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.1) 100%), linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 40%)"
+            "linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 55%, rgba(0,0,0,0.15) 100%), linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 40%)"
         }}
       />
 
@@ -73,7 +74,7 @@ export default function HeroSection() {
       {/* Slider Arrow Controls */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/25 hover:bg-black/60 text-white backdrop-blur-sm transition-all border border-white/20 hover:border-white/50 group"
+        className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/25 hover:bg-black/60 text-white backdrop-blur-sm transition-all border border-white/20 hover:border-white/50 group cursor-pointer"
         aria-label="Previous slide"
       >
         <svg className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,7 +84,7 @@ export default function HeroSection() {
 
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/25 hover:bg-black/60 text-white backdrop-blur-sm transition-all border border-white/20 hover:border-white/50 group"
+        className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full bg-black/25 hover:bg-black/60 text-white backdrop-blur-sm transition-all border border-white/20 hover:border-white/50 group cursor-pointer"
         aria-label="Next slide"
       >
         <svg className="w-5 h-5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,8 +100,8 @@ export default function HeroSection() {
 
           {/* Eyebrow / subtitle */}
           {slide.subtitle && (
-            <div className="flex items-center gap-2 text-[#F9C301] font-bold text-[11px] sm:text-sm md:text-base tracking-[0.18em] uppercase mb-2 md:mb-3">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center gap-2 text-[#FDB515] font-bold text-[11px] sm:text-sm md:text-base tracking-[0.18em] uppercase mb-2 md:mb-3">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-[#FDB515]" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z" />
               </svg>
               <span className="leading-snug">{slide.subtitle}</span>
@@ -109,17 +110,33 @@ export default function HeroSection() {
 
           {/* Main Title */}
           {slide.title && (
-            <h1 className="text-white text-[26px] sm:text-4xl md:text-5xl lg:text-[58px] leading-[1.1] font-extrabold tracking-tight drop-shadow-xl whitespace-pre-line mb-3 md:mb-4">
+            <h1 className="text-white text-[26px] sm:text-4xl md:text-5xl lg:text-[56px] leading-[1.1] font-extrabold tracking-tight drop-shadow-xl whitespace-pre-line mb-3 md:mb-4">
               {slide.title}
             </h1>
           )}
 
           {/* Description */}
           {slide.desc && (
-            <p className="text-white/90 text-[13px] sm:text-base md:text-lg font-medium drop-shadow-md max-w-sm md:max-w-lg">
+            <p className="text-white/90 text-[13px] sm:text-base md:text-lg font-medium drop-shadow-md max-w-sm md:max-w-lg mb-6">
               {slide.desc}
             </p>
           )}
+
+          {/* Action CTAs */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/admissions"
+              className="btn-primary no-underline font-bold text-xs sm:text-sm px-5 py-2.5 sm:px-6 sm:py-3"
+            >
+              Apply for Admissions &rarr;
+            </Link>
+            <Link
+              href="/about-us/curriculum"
+              className="btn-outline-primary border-white text-white hover:bg-white hover:text-[#003262] no-underline font-bold text-xs sm:text-sm px-5 py-2.5 sm:px-6 sm:py-3"
+            >
+              Curriculum
+            </Link>
+          </div>
         </div>
 
         {/* Slider Dots — larger touch targets on mobile */}

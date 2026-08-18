@@ -91,6 +91,24 @@ const courses = [
     description: "Seventh grade advancing in sciences, social studies, and languages.",
     seats: "40 Seats",
     image: "/course_middle.png",
+  },
+  {
+    id: 11,
+    badge: "Middle",
+    durationText: "1 Year",
+    title: "Class 8",
+    description: "Eighth grade focusing on core middle school academic subjects, analytical reasoning, and conceptual skill development.",
+    seats: "40 Seats",
+    image: "/course_middle.png",
+  },
+  {
+    id: 12,
+    badge: "Secondary",
+    durationText: "1 Year",
+    title: "Class 9",
+    description: "Ninth grade focusing on secondary academic subjects, subject specialization, and foundational skill building.",
+    seats: "40 Seats",
+    image: "/course_middle.png",
   }
 ];
 
@@ -123,20 +141,21 @@ export default function CoursesSection() {
         </div>
 
         {/* Courses Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 lg:gap-6">
           {courses.map((course) => (
-            <Link href="#" key={course.id} className="group flex flex-col bg-white rounded-none overflow-hidden border border-black/10 hover:border-[#FDB515]/60 transition-all duration-300 hover:-translate-y-1 shadow-md hover:shadow-xl">
+            <Link href="/about-us/curriculum" key={course.id} className="group flex flex-col bg-white rounded-none overflow-hidden border border-black/10 hover:border-[#FDB515]/60 transition-all duration-300 hover:-translate-y-1 shadow-md hover:shadow-xl">
               
               {/* Image Section */}
               <div className="relative w-full h-[180px] overflow-hidden bg-gray-100">
                 <Image 
                   src={course.image}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   alt={course.title}
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {/* Badge Overlay */}
-                <div className="absolute top-4 right-4 bg-[#F9C301] text-[#111111] text-[11px] font-bold px-3 py-1.5 rounded-none flex items-center gap-1.5 shadow-md">
+                <div className="absolute top-4 right-4 bg-[#FDB515] text-[#003262] text-[11px] font-bold px-3 py-1.5 rounded-none flex items-center gap-1.5 shadow-md">
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
                   {course.badge}
                 </div>
@@ -147,8 +166,8 @@ export default function CoursesSection() {
                 
                 {/* Duration / Type */}
                 <div className="flex items-center gap-2 mb-3">
-                  <svg className="w-4 h-4 text-[#F9C301]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                  <span className="text-[#F9C301] font-semibold text-[13px] tracking-wide uppercase">
+                  <svg className="w-4 h-4 text-[#FDB515]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  <span className="text-[#003262] font-semibold text-[13px] tracking-wide uppercase">
                     {course.durationText}
                   </span>
                 </div>
@@ -163,10 +182,16 @@ export default function CoursesSection() {
                   {course.description}
                 </p>
 
-
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Bottom CTA to Curriculum */}
+        <div className="mt-12 text-center">
+          <Link href="/about-us/curriculum" className="btn-primary font-bold text-sm px-8 py-3.5">
+            View Full Curriculum Framework &rarr;
+          </Link>
         </div>
 
       </div>

@@ -1,38 +1,50 @@
 # Dependencies
-/node_modules
-/.pnpm-store
+node_modules/
+.pnpm-store/
 
 # Next.js build output
-/.next/
-/out/
-
-# Production build
-/build
+.next/
+out/
+build/
+dist/
 
 # Debug logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
-# Environment variables
+# Environment variables & secrets (keep .env.example intact)
 .env
-.env*.local
+.env.local
 .env.development
 .env.test
 .env.production
+backend/.env
+backend/.env.local
+backend/.env.production
 
-# IDE and Editor files
+# SQLite databases & runtime data
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+backend/data/
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/backups/
+
+# IDE and System files
 .vscode/
 .idea/
 *.swp
 *.swo
 .DS_Store
 Thumbs.db
+*.bak
 
-# Vercel
-.vercel
-
-# TypeScript
+# Vercel & Next.js cache
+.vercel/
 *.tsbuildinfo
 next-env.d.ts

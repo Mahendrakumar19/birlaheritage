@@ -150,30 +150,62 @@ export default function Navbar() {
             {[
               { name: 'Home', href: '/' },
               {
-                name: 'About Us',
-                href: '#',
+                name: 'About',
+                href: '/about-us',
                 subMenu: [
-                  { name: "Philosophy", href: "/about-us/philosophy" },
-                  { name: "Leadership", href: "/about-us/leadership" },
+                  { name: "About the School", href: "/about-us" },
+                  { name: "Vision, Mission & Ethos", href: "/about-us/philosophy" },
+                  { name: "Educational Philosophy", href: "/about-us/philosophy" },
+                  { name: "Leadership Messages", href: "/about-us/leadership" },
                   { name: "Mandatory Disclosure", href: "/about-us/mandatory-disclosure" },
-                  { name: "Curriculum", href: "/about-us/curriculum" },
+                ]
+              },
+              {
+                name: 'Academics',
+                href: '/about-us/curriculum',
+                subMenu: [
+                  { name: "Curriculum Framework", href: "/about-us/curriculum" },
+                  { name: "Pre-Primary & Primary", href: "/about-us/curriculum" },
+                  { name: "Middle School & Class 9", href: "/about-us/curriculum" },
+                ]
+              },
+              {
+                name: 'Campus Life',
+                href: '/campus-life',
+                subMenu: [
+                  { name: "Campus Life Overview", href: "/campus-life" },
+                  { name: "Infrastructure & Facilities", href: "/campus-life#infrastructure" },
+                  { name: "Sports & Activities", href: "/campus-life#sports" },
+                  { name: "Student Community", href: "/gallery/students-corner" },
+                  { name: "Campus Gallery", href: "/gallery/campus" },
+                ]
+              },
+              {
+                name: 'Achievements',
+                href: '/gallery',
+                subMenu: [
+                  { name: "Gallery & Event Highlights", href: "/gallery" },
+                  { name: "Student Excellence", href: "/gallery/students-corner" },
+                ]
+              },
+              {
+                name: 'Media',
+                href: '/gallery',
+                subMenu: [
+                  { name: "Photo Gallery Studio", href: "/gallery" },
+                  { name: "Campus Photo Archives", href: "/gallery/campus" },
+                  { name: "Student's Corner", href: "/gallery/students-corner" },
                 ]
               },
               {
                 name: 'Admissions',
+                href: '/admissions',
                 subMenu: [
                   { name: 'Admission Enquiry', href: '/admissions' },
                   { name: 'Admission Process', href: '/admission-process' }
                 ]
               },
-              {
-                name: 'Gallery',
-                subMenu: [
-                  { name: 'Campus', href: '/gallery/campus' },
-                  { name: "Student's corner", href: '/gallery/students-corner' }
-                ]
-              },
-              { name: 'Contact Us', href: '/contact-us' },
+              { name: 'Contact', href: '/contact-us' },
             ].map((item) => (
               <div key={item.name} className="group flex flex-col w-fit relative">
                 <Link href={item.href || '#'} onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 text-white text-3xl md:text-5xl font-bold tracking-tight w-fit hover:text-[#F9C301] transition-colors no-underline">

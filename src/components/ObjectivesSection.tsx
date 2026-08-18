@@ -106,6 +106,7 @@ export default function ObjectivesSection() {
                   <Image
                     src={activeItem.image!}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="h-full w-full object-cover transition-opacity duration-500"
                     alt={activeItem.title}
                   />

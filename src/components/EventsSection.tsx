@@ -1,8 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const galleryHighlights = [
+const BACKEND_URL =
+  (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')) ||
+  'http://localhost:5000';
+
+interface DisplayEvent {
+  id: number | string;
+  title: string;
+  link: string;
+  image: string;
+}
+
+const STATIC_HIGHLIGHTS: DisplayEvent[] = [
   {
     id: 1,
     title: "Annual Spring Festival (Fete) 2026",
@@ -42,6 +55,27 @@ const galleryHighlights = [
 ];
 
 export default function EventsSection() {
+  const [events, setEvents] = useState<DisplayEvent[]>(STATIC_HIGHLIGHTS);
+
+  useEffect(() => {
+    fetch(`${BACKEND_URL}/api/events/public`, { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          const live: DisplayEvent[] = json.data.map((item: { id: number; title: string; coverImage?: string; galleryAlbumId?: string }) => ({
+            id: item.id,
+            title: item.title,
+            link: item.galleryAlbumId ? `/gallery` : "/gallery",
+            image: item.coverImage || "/event_bihar_1_1785832999825.png",
+          }));
+          setEvents(live);
+        }
+      })
+      .catch(() => {
+        // Fallback to static highlights on network error
+      });
+  }, []);
+
   return (
     <section className="w-full py-20 bg-white">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8">
@@ -50,13 +84,13 @@ export default function EventsSection() {
         <div className="text-center mb-16 flex flex-col items-center">
           <p className="section-eyebrow mb-4">See and feel it</p>
           <h2 className="heading-xl text-3xl md:text-4xl">
-            Gallery Highlights
+            Gallery & Event Highlights
           </h2>
         </div>
 
         {/* Grid - Sharp boxes, zero gap */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-[#0f2142]">
-          {galleryHighlights.map((item) => (
+          {events.map((item) => (
             <React.Fragment key={item.id}>
               {/* Image Box */}
               <div className="relative aspect-[4/3] w-full bg-[#111111] overflow-hidden group">
@@ -65,6 +99,7 @@ export default function EventsSection() {
                   alt={item.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
                 />
               </div>
 

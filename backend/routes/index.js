@@ -7,6 +7,10 @@ const announcementRoutes = require('./announcementRoutes');
 const authRoutes = require('./authRoutes');
 const disclosureRoutes = require('./disclosureRoutes');
 const adminUserRoutes = require('./adminUserRoutes');
+const eventRoutes = require('./eventRoutes');
+const leadershipRoutes = require('./leadershipRoutes');
+const testimonialRoutes = require('./testimonialRoutes');
+const achievementRoutes = require('./achievementRoutes');
 
 const router = express.Router();
 
@@ -18,5 +22,9 @@ router.use('/gallery', galleryRoutes);
 router.use('/announcements', announcementRoutes);
 router.use('/disclosures', disclosureRoutes);
 router.use('/admin-users', adminUserRoutes);
+router.use('/events', eventRoutes);
+router.use('/leadership', leadershipRoutes);
+router.use('/testimonials', testimonialRoutes);
+router.use('/achievements', achievementRoutes);
 
 module.exports = router;
