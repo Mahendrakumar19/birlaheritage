@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import HomeNavbar from "@/components/HomeNavbar";
+import HomeNavbar from "@/components/layout/HomeNavbar";
 import Image from "next/image";
 import Link from "next/link";
 

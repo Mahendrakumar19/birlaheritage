@@ -3,8 +3,8 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import HomeNavbar from '@/components/HomeNavbar';
-import Footer from '@/components/Footer';
+import HomeNavbar from '@/components/layout/HomeNavbar';
+import Footer from '@/components/layout/Footer';
 
 const BACKEND_URL =
   (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')) ||
