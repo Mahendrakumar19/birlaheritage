@@ -1,4 +1,0 @@
-// Login page has its own full-screen layout — no sidebar
-export default function AdminLoginLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
-}
