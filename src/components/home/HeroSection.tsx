@@ -40,29 +40,29 @@ export default function HeroSection() {
   const [slides, setSlides] = useState<HeroSlide[]>(DEFAULT_SLIDES);
   const [current, setCurrent] = useState(0);
 
-  // Fetch live campus images from backend if uploaded via admin
+  // Fetch live hero slides from Site Images CMS (or fallback to gallery/defaults)
   useEffect(() => {
-    fetch(`${BACKEND_URL}/api/gallery?collection=campus&active=true&limit=6`, { cache: 'no-store' })
+    fetch(`${BACKEND_URL}/api/site-images/public?category=Hero%20Banner`, { cache: 'no-store' })
       .then((r) => r.json())
       .then((json) => {
         if (json.success && Array.isArray(json.data) && json.data.length > 0) {
-          const liveSlides: HeroSlide[] = json.data.slice(0, 5).map((item: { title?: string; description?: string; imagePath?: string }, idx: number) => {
+          const liveSlides: HeroSlide[] = json.data.map((item: { imageUrl: string; title?: string; subtitle?: string; caption?: string }, idx: number) => {
             const defaultItem = DEFAULT_SLIDES[idx % DEFAULT_SLIDES.length];
-            const resolvedPath = item.imagePath?.startsWith('/uploads/')
-              ? `${BACKEND_URL}${item.imagePath}`
-              : (item.imagePath || defaultItem.image);
+            const resolvedPath = item.imageUrl?.startsWith('/uploads/')
+              ? `${BACKEND_URL}${item.imageUrl}`
+              : (item.imageUrl || defaultItem.image);
             return {
               image: resolvedPath,
-              subtitle: "BIRLA HERITAGE INTERNATIONAL SCHOOL",
-              title: item.title && item.title.trim().length > 3 ? item.title : defaultItem.title,
-              desc: item.description && item.description.trim().length > 5 ? item.description : defaultItem.desc,
+              subtitle: item.subtitle || defaultItem.subtitle,
+              title: item.title || defaultItem.title,
+              desc: item.caption || defaultItem.desc,
             };
           });
           setSlides(liveSlides);
         }
       })
       .catch(() => {
-        // Fallback to DEFAULT_SLIDES on error
+        // Fallback to DEFAULT_SLIDES on network error
       });
   }, []);
 

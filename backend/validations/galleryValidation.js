@@ -41,7 +41,7 @@ function validateCreate({ body, file }) {
     valid: true,
     data: {
       collection:  body.collection.trim(),
-      title:       body.title.trim(),
+      title:       resolvedTitle,
       description: body.description ? body.description.trim() : undefined,
       altText:     body.altText    ? body.altText.trim()    : undefined,
       sortOrder:   body.sortOrder  !== undefined ? Number(body.sortOrder) : undefined,

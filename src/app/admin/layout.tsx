@@ -18,7 +18,8 @@ interface Notification {
 
 const PAGE_TITLES: Record<string, string> = {
   "/admin/dashboard":     "Dashboard",
-  "/admin/gallery":       "Gallery Manager",
+  "/admin/gallery":       "Media Library",
+  "/admin/site-images":   "Site Images & Banners",
   "/admin/announcements": "Announcement Manager",
   "/admin/admissions":    "Admission Enquiries",
   "/admin/contacts":      "Contact Messages",

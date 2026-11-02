@@ -1,13 +1,23 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const facilityPreviews = [
+const BACKEND_URL =
+  (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')) ||
+  'http://localhost:5000';
+
+interface FacilityItem {
+  title: string;
+  desc: string;
+  image: string;
+}
+
+const DEFAULT_FACILITIES: FacilityItem[] = [
   {
     title: "Interactive Learning Spaces",
     desc: "Modern classrooms designed to foster active participation, collaborative problem solving, and student engagement.",
-    image: "/obj_courses_1785831347955.png",
+    image: "/about_main.png",
   },
   {
     title: "STEM & Practical Discovery",
@@ -21,7 +31,36 @@ const facilityPreviews = [
   },
 ];
 
+function resolveImg(p: string) {
+  if (!p) return "/about_main.png";
+  if (p.startsWith("/uploads/")) return `${BACKEND_URL}${p}`;
+  return p;
+}
+
 export default function CampusPreviewSection() {
+  const [facilities, setFacilities] = useState<FacilityItem[]>(DEFAULT_FACILITIES);
+
+  useEffect(() => {
+    fetch(`${BACKEND_URL}/api/site-images/public?category=Campus%20Facilities`, { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          const live: FacilityItem[] = json.data.slice(0, 3).map((slot: { title?: string; caption?: string; description?: string; imageUrl?: string }, idx: number) => {
+            const def = DEFAULT_FACILITIES[idx % DEFAULT_FACILITIES.length];
+            return {
+              title: slot.title || def.title,
+              desc: slot.caption || slot.description || def.desc,
+              image: resolveImg(slot.imageUrl || def.image),
+            };
+          });
+          setFacilities(live);
+        }
+      })
+      .catch(() => {
+        // Silently use defaults
+      });
+  }, []);
+
   return (
     <section className="w-full py-16 md:py-24 bg-[#f8fafc] border-t border-b border-gray-100">
       <div className="container-custom">
@@ -40,7 +79,7 @@ export default function CampusPreviewSection() {
 
         {/* Visual Preview Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {facilityPreviews.map((facility, idx) => (
+          {facilities.map((facility, idx) => (
             <div key={idx} className="card-base overflow-hidden group flex flex-col">
               <div className="relative h-56 w-full overflow-hidden bg-gray-200">
                 <Image
@@ -49,6 +88,7 @@ export default function CampusPreviewSection() {
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  unoptimized={facility.image.startsWith('http')}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -59,12 +99,11 @@ export default function CampusPreviewSection() {
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
                   {facility.desc}
                 </p>
-                <Link
-                  href="/campus-life#infrastructure"
-                  className="text-[#003262] font-semibold text-xs uppercase tracking-wider hover:text-[#FDB515] transition-colors"
-                >
-                  Explore Space &rarr;
-                </Link>
+                <div className="border-t border-gray-100 pt-3">
+                  <span className="text-[11px] font-bold tracking-wider text-[#003262] uppercase">
+                    Campus Facility
+                  </span>
+                </div>
               </div>
             </div>
           ))}

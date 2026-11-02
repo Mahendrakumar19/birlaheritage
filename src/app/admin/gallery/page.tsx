@@ -773,7 +773,7 @@ export default function AdminGalleryPage() {
         {editItem && (
           <form onSubmit={handleEdit} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-gray-700 mb-1">Title *</label>
+              <label className="block text-xs font-bold text-gray-700 mb-1">Title (Optional)</label>
               <input
                 value={editItem.title}
                 onChange={(e) => setEditItem({ ...editItem, title: e.target.value })}

@@ -11,6 +11,7 @@ const eventRoutes = require('./eventRoutes');
 const leadershipRoutes = require('./leadershipRoutes');
 const testimonialRoutes = require('./testimonialRoutes');
 const achievementRoutes = require('./achievementRoutes');
+const siteImageRoutes = require('./siteImageRoutes');
 
 const router = express.Router();
 
@@ -26,5 +27,6 @@ router.use('/events', eventRoutes);
 router.use('/leadership', leadershipRoutes);
 router.use('/testimonials', testimonialRoutes);
 router.use('/achievements', achievementRoutes);
+router.use('/site-images', siteImageRoutes);
 
 module.exports = router;

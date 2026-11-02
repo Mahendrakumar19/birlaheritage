@@ -187,6 +187,13 @@ export const adminApi = {
       request(`/api/achievements/${id}/toggle`, { method: 'PATCH' }),
     delete: (id: number) =>
       request(`/api/achievements/${id}`, { method: 'DELETE' }),
+  },
+
+  // Site Images & Banners
+  siteImages: {
+    list: (category = '') => request(`/api/site-images?category=${encodeURIComponent(category)}`),
+    updateSlot: (slotKey: string, body: object) =>
+      request(`/api/site-images/${slotKey}`, { method: 'PATCH', body: JSON.stringify(body) }),
   }
 };
 
