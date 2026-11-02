@@ -5,6 +5,7 @@ const backendUrl =
   (process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000").replace(/\/$/, "");
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   outputFileTracingRoot: path.join(__dirname),
   compress: true,
   poweredByHeader: false,
