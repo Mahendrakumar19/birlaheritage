@@ -19,7 +19,7 @@ async function seed() {
 
   const defaults = [
     {
-      text: 'Welcome to Birla Heritage International School Siwan — Admissions Open for 2025–26!',
+      text: 'Welcome to Birla Heritage International School Siwan — Admission Open for 2027–28!',
       emoji: '🎓',
       linkUrl: '/admissions',
       linkLabel: 'Apply Now',

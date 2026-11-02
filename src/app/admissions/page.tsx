@@ -102,7 +102,7 @@ export default function AdmissionsPage() {
 
           <div className="mb-12 text-center">
             <p className="section-eyebrow text-lg md:text-xl mb-3">
-              Admissions open for 2026-2027
+              Admission open for 2027-2028
             </p>
             <h2 className="heading-xl text-4xl md:text-5xl lg:text-6xl">
               A school where learning leads tomorrow

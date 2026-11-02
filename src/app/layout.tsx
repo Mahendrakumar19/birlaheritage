@@ -52,7 +52,7 @@ const jsonLd = {
   "@type": "EducationalOrganization",
   "name": "Birla Heritage International School Siwan",
   "url": siteUrl,
-  "logo": `${siteUrl}/modern-school-logo-featuring-stylized-book-icon-symbolizing-education-learning-sleek-design-graduation-cap-315282989.webp`,
+  "logo": `${siteUrl}/birla-heritage-logo.png`,
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Survey No 813 - 817 Markan",

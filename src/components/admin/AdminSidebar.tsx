@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -87,9 +89,7 @@ export default function AdminSidebar({ newAdmissions = 0, newContacts = 0, onClo
     <aside className={`flex flex-col h-full bg-[#0f172a] text-white ${mobile ? 'w-72' : 'w-64'}`}>
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 py-5 border-b border-white/10">
-        <div className="w-9 h-9 rounded-lg bg-[#FDB515] flex items-center justify-center flex-shrink-0">
-          <span className="text-[#003262] font-black text-sm">BH</span>
-        </div>
+        <Image src="/birla-heritage-logo.png" alt="Birla Heritage" width={40} height={40} className="w-9 h-9 object-contain flex-shrink-0 rounded-full bg-white p-0.5" />
         <div className="min-w-0">
           <p className="font-bold text-sm text-white leading-tight truncate">Birla Heritage</p>
           <p className="text-[11px] text-white/50 leading-tight">Admin Panel</p>

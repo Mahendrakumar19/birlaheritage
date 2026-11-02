@@ -36,6 +36,7 @@ backend/uploads/*
 backend/backups/
 
 # IDE and System files
+.kilo/
 .vscode/
 .idea/
 *.swp

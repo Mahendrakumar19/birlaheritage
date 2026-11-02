@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -56,11 +58,21 @@ export default function Footer() {
 
         {/* Col 1: Institutional Overview */}
         <div className="flex flex-col gap-5">
-          <div>
-            <h4 className="text-white font-bold text-[16px] uppercase tracking-wider mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
-              BIRLA HERITAGE
-            </h4>
-            <div className="w-12 h-[2px] bg-[#FDB515]"></div>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/birla-heritage-logo.png"
+              alt="Birla Heritage International School"
+              width={64}
+              height={64}
+              className="h-14 w-14 object-contain rounded-full bg-white/10 p-1 border border-[#FDB515]/40"
+            />
+            <div>
+              <h4 className="text-white font-bold text-[16px] uppercase tracking-wider mb-0.5" style={{ fontFamily: 'var(--font-heading)' }}>
+                BIRLA HERITAGE
+              </h4>
+              <p className="text-[#FDB515] text-[11px] font-semibold tracking-wider uppercase">International School · Siwan</p>
+              <div className="w-12 h-[2px] bg-[#FDB515] mt-1.5"></div>
+            </div>
           </div>
           <p className="text-white/80 text-[14px] leading-relaxed">
             Promoting holistic student development, academic excellence, and character building in a nurturing learning environment.

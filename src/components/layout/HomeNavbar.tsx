@@ -19,7 +19,7 @@ interface Announcement {
   isActive: number;
 }
 
-const FALLBACK_ANNOUNCEMENT = '🎓 Welcome to Birla Heritage International School Siwan — Admissions Open for 2025–26!';
+const FALLBACK_ANNOUNCEMENT = '🎓 Welcome to Birla Heritage International School Siwan — Admission Open for 2027–28!';
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -32,7 +32,7 @@ const navLinks = [
       { name: "About the School", href: "/about-us" },
       { name: "Vision, Mission & Ethos", href: "/about-us/philosophy" },
       { name: "Educational Philosophy", href: "/about-us/philosophy" },
-      { name: "Leadership Messages", href: "/about-us/leadership" },
+      { name: "Our Leadership Team", href: "/about-us/leadership" },
       { name: "Mandatory Disclosure", href: "/about-us/mandatory-disclosure" },
     ],
   },
@@ -87,7 +87,7 @@ const navLinks = [
 const socialLinks = [
   {
     label: "Facebook",
-    href: "https://www.facebook.com/openmindsSiwan/",
+    href: "https://www.facebook.com/BirlaHeritageSchool/",
     icon: (
       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
         <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
@@ -96,27 +96,27 @@ const socialLinks = [
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/birlaheritage_Siwan?igsh=dXhiYW4xanR2bmY1",
+    href: "https://www.instagram.com/birlaheritage_Siwan",
     icon: (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+      <svg
+        className="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        viewBox="0 0 24 24"
+      >
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
         <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
       </svg>
     ),
   },
-  {
-    label: "X / Twitter",
-    href: "https://x.com/openminds_Siwan",
-    icon: (
-      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-      </svg>
-    ),
-  },
+
   {
     label: "YouTube",
-    href: "https://www.youtube.com/@openiminds_Siwan/about",
+    href: "https://www.youtube.com/@birlaheritagesiwan",
     icon: (
       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
         <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -257,34 +257,43 @@ export default function HomeNavbar() {
 
       {/* ─── MAIN NAVBAR ─── */}
       <header
-        className={`fixed left-0 right-0 z-40 w-full transition-all duration-300 bg-[#003262] border-b-[4px] border-[#FDB515] ${montserrat.className} ${scrolled ? "top-0 shadow-lg" : "top-10 shadow-sm"
-          }`}
+        className={`fixed left-0 right-0 z-40 w-full transition-all duration-300 bg-[#003262] border-b-[4px] border-[#FDB515] ${montserrat.className} ${
+          scrolled ? "top-0 shadow-lg" : "top-10 shadow-sm"
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between gap-2 lg:gap-4">
+        <div className="w-full max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 flex items-center justify-between gap-3 lg:gap-6 min-h-[68px] md:min-h-[72px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center no-underline shrink-0" onClick={closeSidebar}>
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 no-underline shrink-0 py-1.5" onClick={closeSidebar}>
             <Image
-              src="/modern-school-logo-featuring-stylized-book-icon-symbolizing-education-learning-sleek-design-graduation-cap-315282989.webp"
-              alt="Birla Heritage Siwan Logo"
-              width={500}
+              src="/birla-heritage-logo.png"
+              alt="Birla Heritage International School Siwan Logo"
+              width={160}
               height={160}
-              className="h-10 md:h-12 w-auto object-contain"
+              className="h-11 md:h-13 w-auto object-contain drop-shadow"
               priority
             />
+            <div className="flex flex-col justify-center">
+              <span className="text-white font-extrabold text-[14px] sm:text-[16px] tracking-wide uppercase leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                Birla Heritage
+              </span>
+              <span className="text-[#FDB515] font-semibold text-[9.5px] sm:text-[10.5px] tracking-wider uppercase leading-tight whitespace-nowrap">
+                International School · Siwan
+              </span>
+            </div>
           </Link>
 
           {/* ── DESKTOP NAV ── */}
-          <nav className="hidden lg:flex items-stretch self-stretch border-l border-white/20">
+          <nav className="hidden lg:flex items-center self-stretch border-l border-white/20 my-auto">
             {navLinks.map((item) =>
               item.subMenu ? (
-                <div key={item.name} className="relative group flex items-stretch">
+                <div key={item.name} className="relative group flex items-center self-stretch">
                   <Link
                     href={item.href || "#"}
-                    className="flex items-center gap-1 px-3.5 xl:px-4 py-4 text-[13.5px] xl:text-[14.5px] font-semibold text-white hover:bg-[#FDB515] hover:text-[#003262] transition-colors duration-200 no-underline border-r border-white/20"
+                    className="flex items-center gap-1.5 px-2.5 xl:px-3.5 2xl:px-4 py-4 text-[13px] xl:text-[14px] font-semibold text-white whitespace-nowrap hover:bg-[#FDB515] hover:text-[#003262] transition-colors duration-200 no-underline border-r border-white/20 h-full"
                     style={{ fontFamily: "var(--font-heading)" }}
                   >
-                    {item.name}
-                    <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span>{item.name}</span>
+                    <svg className="w-3 h-3 transition-transform duration-200 group-hover:rotate-180 opacity-70 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
                     </svg>
                   </Link>
@@ -307,7 +316,7 @@ export default function HomeNavbar() {
                 <Link
                   key={item.name}
                   href={item.href!}
-                  className="flex items-center px-3.5 xl:px-4 py-4 text-[13.5px] xl:text-[14.5px] font-semibold text-white hover:bg-[#FDB515] hover:text-[#003262] transition-colors duration-200 no-underline border-r border-white/20"
+                  className="flex items-center px-2.5 xl:px-3.5 2xl:px-4 py-4 text-[13px] xl:text-[14px] font-semibold text-white whitespace-nowrap hover:bg-[#FDB515] hover:text-[#003262] transition-colors duration-200 no-underline border-r border-white/20 h-full"
                   style={{ fontFamily: "var(--font-heading)" }}
                 >
                   {item.name}
@@ -317,8 +326,8 @@ export default function HomeNavbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center">
-            <Link href="/admissions" className="btn-primary px-5 py-2.5 text-[14px] font-bold whitespace-nowrap no-underline">
+          <div className="hidden lg:flex items-center shrink-0">
+            <Link href="/admissions" className="btn-primary px-4 xl:px-5 py-2.5 text-[13px] xl:text-[14px] font-bold whitespace-nowrap no-underline shadow-md hover:shadow-lg transition-all">
               Admissions Open
             </Link>
           </div>
@@ -338,16 +347,19 @@ export default function HomeNavbar() {
               className="relative w-11 h-11 flex flex-col items-center justify-center gap-[5px] rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all duration-200 active:scale-95"
             >
               <span
-                className={`block h-[2.5px] bg-white rounded-full transition-all duration-300 origin-center ${sidebarOpen ? "w-6 rotate-45 translate-y-[7.5px]" : "w-6"
-                  }`}
+                className={`block h-[2.5px] bg-white rounded-full transition-all duration-300 origin-center ${
+                  sidebarOpen ? "w-6 rotate-45 translate-y-[7.5px]" : "w-6"
+                }`}
               />
               <span
-                className={`block h-[2.5px] bg-white rounded-full transition-all duration-300 ${sidebarOpen ? "w-0 opacity-0" : "w-5"
-                  }`}
+                className={`block h-[2.5px] bg-white rounded-full transition-all duration-300 ${
+                  sidebarOpen ? "w-0 opacity-0" : "w-5"
+                }`}
               />
               <span
-                className={`block h-[2.5px] bg-white rounded-full transition-all duration-300 origin-center ${sidebarOpen ? "w-6 -rotate-45 -translate-y-[7.5px]" : "w-6"
-                  }`}
+                className={`block h-[2.5px] bg-white rounded-full transition-all duration-300 origin-center ${
+                  sidebarOpen ? "w-6 -rotate-45 -translate-y-[7.5px]" : "w-6"
+                }`}
               />
             </button>
           </div>
@@ -369,15 +381,19 @@ export default function HomeNavbar() {
           }`}
       >
         {/* Sidebar Header */}
-        <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-[#FDB515] to-[#ea580c]">
-          <Link href="/" onClick={closeSidebar} className="no-underline">
+        <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-[#003262] to-[#002147] border-b-2 border-[#FDB515]">
+          <Link href="/" onClick={closeSidebar} className="no-underline flex items-center gap-3">
             <Image
-              src="/modern-school-logo-featuring-stylized-book-icon-symbolizing-education-learning-sleek-design-graduation-cap-315282989.webp"
-              alt="Logo"
-              width={180}
-              height={60}
-              className="h-9 w-auto object-contain brightness-0 invert"
+              src="/birla-heritage-logo.png"
+              alt="Birla Heritage Logo"
+              width={120}
+              height={120}
+              className="h-10 w-10 object-contain drop-shadow"
             />
+            <div className="flex flex-col">
+              <span className="text-white font-extrabold text-sm uppercase leading-tight">Birla Heritage</span>
+              <span className="text-[#FDB515] text-[10px] uppercase font-semibold">International School</span>
+            </div>
           </Link>
           <button
             onClick={closeSidebar}

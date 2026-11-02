@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Leadership & Governance | Birla Heritage International School Siwan",
+  title: "Our Leadership Team | Birla Heritage International School Siwan",
   description:
-    "Meet the leadership team of Birla Heritage International School Siwan: Chairman Nitya Singh, Director Subash Singh, and school leadership.",
+    "Meet Our Leadership Team at Birla Heritage International School Siwan: Chairman Nitya Singh, Director Subash Singh, Principal, Vice Principal, and School Coordinator.",
 };
 
 export default function LeadershipLayout({

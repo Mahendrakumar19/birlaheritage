@@ -51,7 +51,9 @@ export default function TestimonialsSection() {
             id: item.id,
             name: item.name,
             role: item.role,
-            image: item.imagePath || "/parent_avatar_1.png",
+            image: item.imagePath
+              ? (item.imagePath.startsWith("/uploads/") ? `${BACKEND_URL}${item.imagePath}` : item.imagePath)
+              : "/parent_avatar_1.png",
             text: item.quote,
           }));
           setTestimonials(live);

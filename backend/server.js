@@ -26,10 +26,19 @@ app.use(
 app.use(
   cors({
     origin(origin, callback) {
-      if (!origin || env.corsOrigins.includes(origin)) {
+      if (!origin) return callback(null, true);
+
+      const isAllowed =
+        env.corsOrigins.includes(origin) ||
+        /^https?:\/\/(www\.)?birlaheritagesiwan\.com$/i.test(origin) ||
+        /^https?:\/\/(www\.)?birlaheritage\.com$/i.test(origin) ||
+        /^http:\/\/localhost:\d+$/i.test(origin) ||
+        /^http:\/\/127\.0\.0\.1:\d+$/i.test(origin);
+
+      if (isAllowed) {
         return callback(null, true);
       }
-      return callback(new Error(`CORS blocked for origin: ${origin}`));
+      return callback(null, false);
     },
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'x-api-key', 'authorization', 'Authorization'],

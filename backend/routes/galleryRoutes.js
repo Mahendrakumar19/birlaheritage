@@ -40,6 +40,26 @@ const uploadSingle = (req, res, next) => {
   });
 };
 
+const uploadMultiple = (req, res, next) => {
+  upload.array('images', 30)(req, res, (err) => {
+    if (err) {
+      if (err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(422).json({
+          success: false,
+          message: 'Validation failed',
+          errors: [{ field: 'images', message: 'Each image must be 10 MB or smaller' }],
+        });
+      }
+      return res.status(err.statusCode || 422).json({
+        success: false,
+        message: err.message || 'Batch upload failed',
+      });
+    }
+    next();
+  });
+};
+
+router.post('/batch',         adminAuth, requirePermission('content:write'), uploadMultiple, galleryController.createBatchGalleryItems);
 router.post('/',              adminAuth, requirePermission('content:write'), uploadSingle, galleryController.createGalleryItem);
 router.patch('/reorder',      adminAuth, requirePermission('content:write'), galleryController.reorderGallery);
 router.patch('/:id',          adminAuth, requirePermission('content:write'), galleryController.updateGalleryItem);

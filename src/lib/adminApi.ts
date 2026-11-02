@@ -76,6 +76,8 @@ export const adminApi = {
     get:    (id: number)  => request(`/api/gallery/${id}`),
     create: (form: FormData) =>
       request('/api/gallery', { method: 'POST', body: form }, true),
+    batchCreate: (form: FormData) =>
+      request('/api/gallery/batch', { method: 'POST', body: form }, true),
     update: (id: number, body: object) =>
       request(`/api/gallery/${id}`, { method: 'PATCH', body: JSON.stringify(body) }),
     toggle: (id: number) =>

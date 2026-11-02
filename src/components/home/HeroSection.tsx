@@ -1,10 +1,21 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HomeNavbar from "@/components/layout/HomeNavbar";
 import Image from "next/image";
 import Link from "next/link";
 
-const heroSlides = [
+const BACKEND_URL =
+  (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '')) ||
+  'http://localhost:5000';
+
+interface HeroSlide {
+  image: string;
+  subtitle: string;
+  title: string;
+  desc: string;
+}
+
+const DEFAULT_SLIDES: HeroSlide[] = [
   {
     image: "https://birlaheritagesiwan.com/uploads/gallery/gallery_b363d145-55b1-48dc-aad3-4e860c6cbbd7.jpg",
     subtitle: "BIRLA HERITAGE INTERNATIONAL SCHOOL",
@@ -26,18 +37,54 @@ const heroSlides = [
 ];
 
 export default function HeroSection() {
+  const [slides, setSlides] = useState<HeroSlide[]>(DEFAULT_SLIDES);
   const [current, setCurrent] = useState(0);
 
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % heroSlides.length);
-  const prevSlide = () => setCurrent((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+  // Fetch live campus images from backend if uploaded via admin
+  useEffect(() => {
+    fetch(`${BACKEND_URL}/api/gallery?collection=campus&active=true&limit=6`, { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((json) => {
+        if (json.success && Array.isArray(json.data) && json.data.length > 0) {
+          const liveSlides: HeroSlide[] = json.data.slice(0, 5).map((item: { title?: string; description?: string; imagePath?: string }, idx: number) => {
+            const defaultItem = DEFAULT_SLIDES[idx % DEFAULT_SLIDES.length];
+            const resolvedPath = item.imagePath?.startsWith('/uploads/')
+              ? `${BACKEND_URL}${item.imagePath}`
+              : (item.imagePath || defaultItem.image);
+            return {
+              image: resolvedPath,
+              subtitle: "BIRLA HERITAGE INTERNATIONAL SCHOOL",
+              title: item.title && item.title.trim().length > 3 ? item.title : defaultItem.title,
+              desc: item.description && item.description.trim().length > 5 ? item.description : defaultItem.desc,
+            };
+          });
+          setSlides(liveSlides);
+        }
+      })
+      .catch(() => {
+        // Fallback to DEFAULT_SLIDES on error
+      });
+  }, []);
 
-  const slide = heroSlides[current];
+  // Auto-play hero slides every 7 seconds
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const prevSlide = () => setCurrent((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+
+  const slide = slides[current] || slides[0] || DEFAULT_SLIDES[0];
 
   return (
     <section className="relative w-full h-[100dvh] min-h-[580px] overflow-hidden bg-black">
 
       {/* Background Images Slider */}
-      {heroSlides.map((s, idx) => (
+      {slides.map((s, idx) => (
         <div
           key={idx}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out z-0 ${
@@ -50,9 +97,16 @@ export default function HeroSection() {
             alt={`Hero background ${idx + 1}`}
             fill
             priority={idx === 0}
-            quality={100}
+            quality={90}
             unoptimized
             className="object-cover object-[75%_center] md:object-center"
+            onError={(e) => {
+              // Graceful fallback to static college background if remote fails
+              const target = e.currentTarget as unknown as HTMLImageElement;
+              if (target && !target.src.includes('creative_college_bg')) {
+                target.src = '/creative_college_bg.png';
+              }
+            }}
           />
         </div>
       ))}
@@ -141,11 +195,11 @@ export default function HeroSection() {
 
         {/* Slider Dots — larger touch targets on mobile */}
         <div className="flex items-center gap-2 sm:gap-3 mt-6 md:mt-8 pointer-events-auto">
-          {heroSlides.map((_, i) => (
+          {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`rounded-full transition-all duration-300 ${
+              className={`rounded-full transition-all duration-300 cursor-pointer ${
                 i === current
                   ? "w-8 sm:w-10 h-2 bg-[#F9C301]"
                   : "w-2 h-2 bg-white/50 hover:bg-white/80"

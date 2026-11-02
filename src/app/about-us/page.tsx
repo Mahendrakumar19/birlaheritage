@@ -55,22 +55,37 @@ function AboutIntroduction() {
         <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-14">
           <div className="w-full md:w-1/2 text-gray-700 text-[15px] md:text-[16.5px] leading-relaxed space-y-4">
             <p>
-              Birla Heritage International School Siwan reiterates and restores what Tagore called the hallmarks of childhood — <strong>&apos;the Joy of Learning&apos;</strong> and the <strong>&apos;Creative Spirit&apos;</strong>. The School firmly believes in the uniqueness of each child, thereby fostering holistic development through integrated learning opportunities nurturing 21st Century Skills.
-            </p>
-            <p>
-              Our philosophy is based on the constructive approach where learners are actively involved in their learning within a self-governing environment. Learning experiences are interactive, student-centric, and progress from known to unknown, concrete to abstract, and local to global.
-            </p>
-            <p>
-              Educators at Birla Heritage are mindful of each student&apos;s emotional, social, psychological, physical, and cognitive growth, providing a motivational framework for every learning opportunity.
-            </p>
-            <p className="font-semibold text-[#003262]">
-              A learner at Birla Heritage International School develops a global perspective and life skills to excel in their desired field and become a lifelong learner.
+              BIRLA HERITAGE established in April, 2024, is a renowned 10+2
+              co-educational English medium institution affiliated with the
+              CBSE, New Delhi. Nested in the serene region of Siwan, the school
+              offers a comprehensive educational experience from Kindergarten to
+              Senior Secondary levels, fostering holistic development in a
+              dynamic and engaging learning environment. Spread across a (land
+              area) pollution-free campus, the school boasts state-of-the-art
+              infrastructure, including airconditioned classrooms, advanced
+              labs, sports facilities. Emphasizing safety and convenience, the
+              campus is equipped with CCTV cameras, GPS-enabled buses, and
+              dedicated infirmaries.
+              </p>
+              <p>
+              The educational philosophy of Birla
+              Heritage integrates academic excellence with values, nurturing
+              resourcefulness, resilience, and cooperation. By incorporating
+              Sustainable Development Goals (SDGs) and innovative teaching
+              methodologies like multiple intelligences, the school prepares
+              students for global challenges. Enrichment programs such as yoga,
+              Art of Living sessions, and personality development workshops
+              complement its robust academic framework. With a mission to
+              provide holistic growth in a conducive environment, Birla Heritage
+              ensures students refine the social fabric as compassionate,
+              responsible global citizens, blending ancient traditions with
+              modern innovations for a brighter future.
             </p>
           </div>
           <div className="w-full md:w-1/2 relative">
             <div className="relative z-10 w-full h-[280px] sm:h-[360px] md:h-[420px] rounded-lg overflow-hidden shadow-2xl border-4 border-white">
               <Image
-                src="/about_small.png"
+                src="/about_small.jpeg"
                 alt="Students engaging in collaborative learning at Birla Heritage"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -231,13 +246,14 @@ function LeadershipPreviewSection() {
       <div className="container-custom text-center">
         <span className="badge-gold mb-3">Institutional Guidance</span>
         <h2 className="text-white text-3xl md:text-4xl font-extrabold mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-          Leadership & Governance
+          Our Leadership Team
         </h2>
         <p className="text-white/80 text-base max-w-2xl mx-auto mb-10 font-light">
-          Guided by dedicated educationists and industry leaders committed to fostering excellence across all aspects of school life.
+          Steered by our Chairman, Director, and Principal, with dedicated academic leadership from our Vice Principal and School Coordinator.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-left">
+        {/* Core Leadership Team: Chairman, Director, Principal */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-left">
           <div className="bg-white/10 backdrop-blur-md p-6 rounded border border-white/15">
             <h3 className="text-[#FDB515] font-bold text-sm uppercase tracking-wider mb-1">Chairman</h3>
             <p className="text-white font-bold text-xl mb-2">Nitya Singh</p>
@@ -258,7 +274,26 @@ function LeadershipPreviewSection() {
             <h3 className="text-[#FDB515] font-bold text-sm uppercase tracking-wider mb-1">Principal</h3>
             <p className="text-white/80 font-semibold text-lg mb-2">[Information Pending]</p>
             <p className="text-amber-300 text-xs leading-relaxed">
-              Official Principal message, biography, and portrait photograph pending formal content delivery from administration.
+              Leading school administration, pedagogy governance, and future-ready student development.
+            </p>
+          </div>
+        </div>
+
+        {/* Academic Administration: Vice Principal & School Coordinator */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10 text-left">
+          <div className="bg-white/5 backdrop-blur-sm p-5 rounded border border-white/10">
+            <h3 className="text-[#FDB515] font-bold text-xs uppercase tracking-wider mb-1">Vice Principal</h3>
+            <p className="text-white/90 font-semibold text-base mb-1">Office of the Vice Principal</p>
+            <p className="text-white/60 text-xs leading-relaxed">
+              Overseeing holistic education, academic growth, and student welfare with excellence.
+            </p>
+          </div>
+
+          <div className="bg-white/5 backdrop-blur-sm p-5 rounded border border-white/10">
+            <h3 className="text-[#FDB515] font-bold text-xs uppercase tracking-wider mb-1">School Coordinator</h3>
+            <p className="text-white/90 font-semibold text-base mb-1">Office of the School Coordinator</p>
+            <p className="text-white/60 text-xs leading-relaxed">
+              Coordinating experiential learning projects, CCA programs, and parent-school partnerships.
             </p>
           </div>
         </div>

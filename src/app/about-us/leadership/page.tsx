@@ -6,7 +6,8 @@ import HomeNavbar from "@/components/layout/HomeNavbar";
 import Footer from "@/components/layout/Footer";
 
 export default function LeadershipPage() {
-  const leaders = [
+  // 1. Primary Leadership Team: Chairman, Director, Principal
+  const coreLeaders = [
     {
       role: "Chairman's Office",
       name: "Nitya Singh",
@@ -53,14 +54,70 @@ export default function LeadershipPage() {
       reverse: false,
       isPlaceholder: true,
       quote: "Fostering academic excellence, character development, and future-ready skills in every learner.",
-      bio: "Academic Leadership & School Administration.",
+      bio: "Academic Leadership & Institutional Administration.",
       message: (
         <>
           <p className="mb-4">
-            Welcome to Birla Heritage International School Siwan. Our school is committed to nurturing curiosity, intellectual growth, and strong ethical values in every student.
+            Welcome to Birla Heritage International School Siwan. Our school is committed to nurturing curiosity, intellectual growth, and strong ethical values in every student through constructive, experiential pedagogy.
           </p>
           <div className="p-4 bg-amber-50 border border-amber-200 text-amber-900 text-xs md:text-sm rounded font-medium">
             <strong>Official Content Notice:</strong> Official Principal name, designation, message copy, and portrait photograph are pending final content delivery from school administration.
+          </div>
+        </>
+      ),
+    }
+  ];
+
+  // 2. Academic Administration & Coordination: Vice Principal & School Coordinator
+  const academicLeaders = [
+    {
+      role: "Vice Principal's Office",
+      name: "Office of the Vice Principal",
+      designation: "Vice Principal",
+      image: "/team_placeholder.jpeg",
+      reverse: true,
+      isPlaceholder: false,
+      quote: "Together, let us empower every child to discover their potential and make a meaningful difference in the world.",
+      bio: "Academic Leadership, Holistic Student Growth & Parent-Educator Collaboration.",
+      message: (
+        <>
+          <p className="mb-4">
+            Welcome to Birla Open Minds International School, Siwan! It gives me immense pleasure to welcome you to our school community, where education goes beyond textbooks and classrooms. At Birla Open Minds International School, we believe that every child is unique, capable, and full of potential. Our endeavour is to provide a nurturing, inclusive, and stimulating environment where students are encouraged to learn, explore, question, create, and grow with confidence.
+          </p>
+          <p className="mb-4">
+            As an institution committed to holistic education, we focus on developing not only academic excellence but also strong values, life skills, creativity, critical thinking, communication, and a sense of responsibility. We strive to create meaningful learning experiences that prepare our students to face the opportunities and challenges of an ever-changing world.
+          </p>
+          <p className="mb-4">
+            Our dedicated teachers work collaboratively to understand the individual needs of every learner and to make education engaging, experiential, and purposeful. We also believe that a strong partnership between the school and parents plays a vital role in a child&apos;s overall development.
+          </p>
+          <p className="mb-4">
+            At Birla Open Minds International School, we are committed to nurturing responsible, compassionate, confident, and lifelong learners who can contribute positively to society. I look forward to working closely with our students, parents, teachers, and the entire school community in building a culture of excellence, empathy, innovation, and continuous growth.
+          </p>
+          <p className="font-semibold text-[#003262] mb-3">
+            Together, let us empower every child to discover their potential and make a meaningful difference in the world.
+          </p>
+          <p className="text-xs font-bold uppercase tracking-wider text-[#FDB515]">
+            — Warm regards, Vice Principal
+          </p>
+        </>
+      ),
+    },
+    {
+      role: "School Coordination Office",
+      name: "[School Coordinator Information Pending]",
+      designation: "School Coordinator",
+      image: "/team_placeholder.jpeg",
+      reverse: false,
+      isPlaceholder: true,
+      quote: "Bridging experiential learning, co-curricular clubs, and parent-educator partnerships.",
+      bio: "Experiential Projects, CCA, Event Management & Facilitator Coordination.",
+      message: (
+        <>
+          <p className="mb-4">
+            The School Coordinator orchestrates hands-on projects, STEM kits, Little Agriculturist programs, creative arts, and inter-school events, ensuring every child actively participates beyond the textbook.
+          </p>
+          <div className="p-4 bg-amber-50 border border-amber-200 text-amber-900 text-xs md:text-sm rounded font-medium">
+            <strong>Official Content Notice:</strong> Official School Coordinator profile and photograph are pending administrative release.
           </div>
         </>
       ),
@@ -91,10 +148,10 @@ export default function LeadershipPage() {
             <span className="text-[#FDB515] font-bold tracking-wider text-xs md:text-sm uppercase">Guiding the Future</span>
           </div>
           <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 drop-shadow-xl" style={{ fontFamily: 'var(--font-heading)' }}>
-            Leadership & Governance
+            Our Leadership Team
           </h1>
           <p className="text-white/90 text-base md:text-xl max-w-2xl font-light leading-relaxed">
-            Meet the visionaries who inspire excellence and shape the future of Birla Heritage International School Siwan.
+            Meet the visionaries, academic administrators, and coordinators who inspire excellence and shape the future of Birla Heritage International School Siwan.
           </p>
         </div>
 
@@ -102,15 +159,27 @@ export default function LeadershipPage() {
         <div className="absolute bottom-0 w-full h-16 bg-gradient-to-t from-[#fcfcfc] to-transparent z-20" />
       </section>
 
-      {/* Leadership Content Section */}
-      <section className="py-16 md:py-24 container-custom flex-1">
-        <div className="flex flex-col gap-16 md:gap-24">
-          {leaders.map((leader, index) => (
+      {/* Main Leadership Section: Chairman, Director & Principal */}
+      <section className="py-16 md:py-20 container-custom flex-1">
+        <div className="mb-14 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+            <span className="w-8 h-[2px] bg-[#FDB515]" />
+            <span className="text-[#FDB515] font-bold tracking-widest uppercase text-xs md:text-sm">Institutional Governance</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl text-[#003262] font-extrabold" style={{ fontFamily: 'var(--font-heading)' }}>
+            Our Leadership Team
+          </h2>
+          <p className="text-gray-600 text-sm md:text-base mt-2 max-w-2xl">
+            Steered by our Chairman, Director, and Principal who establish the institutional vision, moral foundation, and academic standards.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-16 md:gap-20">
+          {coreLeaders.map((leader, index) => (
             <div
               key={index}
               className={`flex flex-col ${leader.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-16 items-start group`}
             >
-
               {/* Image Container */}
               <div className="w-full lg:w-4/12 shrink-0 relative">
                 <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow-lg border border-gray-200">
@@ -156,12 +225,83 @@ export default function LeadershipPage() {
                     {leader.message}
                   </div>
                 </div>
-
               </div>
-
             </div>
           ))}
         </div>
+
+        {/* Section 2: Vice Principal & School Coordinator */}
+        <div className="mt-20 pt-16 border-t-2 border-gray-100">
+          <div className="mb-14 text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-2">
+              <span className="w-8 h-[2px] bg-[#FDB515]" />
+              <span className="text-[#FDB515] font-bold tracking-widest uppercase text-xs md:text-sm">Academic Administration & Coordination</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl text-[#003262] font-extrabold" style={{ fontFamily: 'var(--font-heading)' }}>
+              Vice Principal & School Coordinator
+            </h2>
+            <p className="text-gray-600 text-sm md:text-base mt-2 max-w-2xl">
+              Driving curriculum delivery, holistic student engagement, teacher mentoring, and school activities every single day.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-16 md:gap-20">
+            {academicLeaders.map((leader, index) => (
+              <div
+                key={index}
+                className={`flex flex-col ${leader.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-10 lg:gap-16 items-start group`}
+              >
+                {/* Image Container */}
+                <div className="w-full lg:w-4/12 shrink-0 relative">
+                  <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden shadow-lg border border-gray-200">
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {leader.isPlaceholder && (
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-4 text-center">
+                        <span className="badge-gold text-xs">Official Photo Pending</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Text Container */}
+                <div className="w-full lg:w-8/12 flex flex-col justify-center">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="w-8 h-[2px] bg-[#FDB515]" />
+                    <h3 className="text-[#FDB515] font-bold tracking-widest uppercase text-xs md:text-sm">
+                      {leader.role}
+                    </h3>
+                  </div>
+
+                  <h2 className="text-3xl md:text-4xl text-[#003262] font-bold mb-1" style={{ fontFamily: 'var(--font-heading)' }}>
+                    {leader.name}
+                  </h2>
+                  <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-5">{leader.designation}</p>
+
+                  {/* Profile / Bio Summary */}
+                  <div className="mb-6 bg-gray-50 p-4 rounded border-l-4 border-[#003262]">
+                    <h4 className="text-[#003262] font-bold text-xs uppercase tracking-wider mb-1">Profile Overview</h4>
+                    <p className="text-gray-700 text-sm leading-relaxed">{leader.bio}</p>
+                  </div>
+
+                  {/* Formal Message */}
+                  <div>
+                    <h4 className="text-[#003262] font-bold text-xs uppercase tracking-wider mb-2">Message to the Community</h4>
+                    <div className="text-gray-700 text-sm md:text-base leading-relaxed space-y-4">
+                      {leader.message}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </section>
 
       {/* Bottom Admissions CTA */}
@@ -181,4 +321,3 @@ export default function LeadershipPage() {
     </main>
   );
 }
-

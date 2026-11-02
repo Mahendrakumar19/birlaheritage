@@ -9,7 +9,7 @@ export default function AdmissionsCtaBanner() {
       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#FDB515_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
       <div className="container-custom relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
-        <span className="badge-gold mb-4">Admissions Open 2025–26</span>
+        <span className="badge-gold mb-4">Admission Open 2027–28</span>
         <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
           Begin Your Child&apos;s Journey of Excellence
         </h2>

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -64,9 +66,7 @@ export default function AdminLoginPage() {
           <div className="px-8 py-10">
             {/* Logo */}
             <div className="flex flex-col items-center mb-8">
-              <div className="w-16 h-16 rounded-2xl bg-[#003262] flex items-center justify-center mb-4 shadow-lg shadow-[#003262]/30">
-                <span className="text-[#FDB515] font-black text-xl">BH</span>
-              </div>
+              <Image src="/birla-heritage-logo.png" alt="Birla Heritage Logo" width={80} height={80} className="w-20 h-20 object-contain mb-4 drop-shadow-md" />
               <h1 className="text-2xl font-black text-gray-900">Welcome Back</h1>
               <p className="text-sm text-gray-400 mt-1 text-center">Birla Heritage International School — Admin Portal</p>
             </div>

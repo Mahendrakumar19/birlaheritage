@@ -41,7 +41,7 @@ const env = {
     '..',
     process.env.DB_PATH || './data/school.db'
   ),
-  corsOrigins: String(process.env.CORS_ORIGINS || 'http://localhost:3000')
+  corsOrigins: String(process.env.CORS_ORIGINS || 'http://localhost:3000,http://127.0.0.1:3000,https://birlaheritagesiwan.com,https://www.birlaheritagesiwan.com')
     .split(',')
     .map((o) => o.trim())
     .filter(Boolean),

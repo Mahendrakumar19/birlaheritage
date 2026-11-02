@@ -66,7 +66,9 @@ export default function EventsSection() {
             id: item.id,
             title: item.title,
             link: item.galleryAlbumId ? `/gallery` : "/gallery",
-            image: item.coverImage || "/event_bihar_1_1785832999825.png",
+            image: item.coverImage
+              ? (item.coverImage.startsWith("/uploads/") ? `${BACKEND_URL}${item.coverImage}` : item.coverImage)
+              : "/event_bihar_1_1785832999825.png",
           }));
           setEvents(live);
         }

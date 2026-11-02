@@ -22,18 +22,18 @@ export default function Home() {
 
       {/* 2. School at a Glance */}
       <SchoolAtAGlance />
+      
+      {/* 5. Holistic Development & Institutional Identity */}
+      <About />
+
+      {/* 6. Leadership Messages */}
+      <MessagesSection />
 
       {/* 3. Why Birla Heritage? (Objectives) */}
       <ObjectivesSection />
 
       {/* 4. Academic Excellence (Class 1-9 progression) */}
       <CoursesSection />
-
-      {/* 5. Holistic Development & Institutional Identity */}
-      <About />
-
-      {/* 6. Leadership Messages */}
-      <MessagesSection />
 
       {/* 7. Campus & Facilities Preview */}
       <CampusPreviewSection />
