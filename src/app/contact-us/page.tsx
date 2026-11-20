@@ -146,7 +146,7 @@ export default function ContactUsPage() {
                 </svg>
               </div>
               <h3 className="text-2xl font-semibold text-[#111] mb-3">Email/Write To Us</h3>
-              <p className="text-[#444] text-lg">info@birlaheritageSiwan.com</p>
+              <p className="text-[#444] text-lg">info@birlaheritagesiwan.com</p>
             </div>
 
           </div>

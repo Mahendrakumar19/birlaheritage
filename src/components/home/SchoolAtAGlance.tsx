@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import Link from "next/link";
 
 export default function SchoolAtAGlance() {
-  const [activeCategory, setActiveCategory] = useState<"heritage" | "grow">("heritage");
-  const [activeStage, setActiveStage] = useState<"foundational" | "primary">("foundational");
+  const [activeCategory, setActiveCategory] = useState<"heritage" | "grow" | "thrive" | "admissions">("heritage");
+  const [activeStage, setActiveStage] = useState<"foundational" | "primary" | "middle" | "senior">("foundational");
 
   return (
     <section className="w-full py-16 md:py-24 bg-[#fbfcfd] border-b border-gray-100 relative overflow-hidden">
@@ -21,13 +21,13 @@ export default function SchoolAtAGlance() {
       <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         
         {/* ── Section Header ── */}
-        <div className="text-center max-w-4xl mx-auto mb-10 md:mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDB515]/15 border border-[#FDB515]/30 mb-4">
+        <div className="text-center max-w-5xl mx-auto mb-10 md:mb-14">
+          {/* <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FDB515]/15 border border-[#FDB515]/30 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#FDB515] animate-pulse" />
             <span className="text-[#003262] font-black text-xs md:text-sm tracking-widest uppercase">
               We are Birla Heritage
             </span>
-          </div>
+          </div> */}
 
           <h2 className="heading-xl text-3xl sm:text-4xl md:text-5xl text-gray-900 mb-5 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
             Nurturing Enlightened Humanity & Academic Excellence
@@ -37,33 +37,59 @@ export default function SchoolAtAGlance() {
             Founded on the eternal conviction that every child is a triumph of nature. Explore who we are through our guiding ethos, and how we grow through our experiential IGNITE pedagogy.
           </p>
 
-          {/* ── Two Main Categories Tab Switcher ── */}
-          <div className="flex justify-center mt-8">
-            <div className="inline-flex p-1.5 bg-gray-100 rounded-2xl border border-gray-200/80 shadow-inner">
+          {/* ── Four Main Categories Tab Switcher (Single Line) ── */}
+          <div className="w-full flex justify-center mt-8 overflow-x-auto py-2 scrollbar-none">
+            <div className="inline-flex items-center p-1.5 bg-gray-100 rounded-2xl border border-gray-200/80 shadow-inner flex-nowrap whitespace-nowrap gap-1">
               <button
                 type="button"
                 onClick={() => setActiveCategory("heritage")}
-                className={`flex items-center gap-2.5 px-6 sm:px-9 py-3 rounded-xl font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                className={`flex items-center gap-2 px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 rounded-xl font-extrabold text-[11px] sm:text-xs md:text-[13px] uppercase tracking-wider transition-all duration-300 cursor-pointer shrink-0 ${
                   activeCategory === "heritage"
                     ? "bg-[#003262] text-white shadow-lg shadow-[#003262]/25 scale-[1.02]"
                     : "text-gray-600 hover:text-gray-900 hover:bg-white/60"
                 }`}
               >
-                <span className={`w-2.5 h-2.5 rounded-full ${activeCategory === "heritage" ? "bg-[#FDB515]" : "bg-gray-400"}`} />
-                We are Birla Heritage
+                <span className={`w-2 h-2 rounded-full shrink-0 ${activeCategory === "heritage" ? "bg-[#FDB515]" : "bg-gray-400"}`} />
+                <span>We are Birla Heritage</span>
               </button>
               
               <button
                 type="button"
                 onClick={() => setActiveCategory("grow")}
-                className={`flex items-center gap-2.5 px-6 sm:px-9 py-3 rounded-xl font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                className={`flex items-center gap-2 px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 rounded-xl font-extrabold text-[11px] sm:text-xs md:text-[13px] uppercase tracking-wider transition-all duration-300 cursor-pointer shrink-0 ${
                   activeCategory === "grow"
                     ? "bg-[#003262] text-white shadow-lg shadow-[#003262]/25 scale-[1.02]"
                     : "text-gray-600 hover:text-gray-900 hover:bg-white/60"
                 }`}
               >
-                <span className={`w-2.5 h-2.5 rounded-full ${activeCategory === "grow" ? "bg-[#FDB515]" : "bg-gray-400"}`} />
-                How We Grow
+                <span className={`w-2 h-2 rounded-full shrink-0 ${activeCategory === "grow" ? "bg-[#FDB515]" : "bg-gray-400"}`} />
+                <span>How We Grow (IGNITE)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveCategory("thrive")}
+                className={`flex items-center gap-2 px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 rounded-xl font-extrabold text-[11px] sm:text-xs md:text-[13px] uppercase tracking-wider transition-all duration-300 cursor-pointer shrink-0 ${
+                  activeCategory === "thrive"
+                    ? "bg-[#003262] text-white shadow-lg shadow-[#003262]/25 scale-[1.02]"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-white/60"
+                }`}
+              >
+                <span className={`w-2 h-2 rounded-full shrink-0 ${activeCategory === "thrive" ? "bg-[#FDB515]" : "bg-gray-400"}`} />
+                <span>THRIVE – Beyond Academics</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveCategory("admissions")}
+                className={`flex items-center gap-2 px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 rounded-xl font-extrabold text-[11px] sm:text-xs md:text-[13px] uppercase tracking-wider transition-all duration-300 cursor-pointer shrink-0 ${
+                  activeCategory === "admissions"
+                    ? "bg-[#003262] text-white shadow-lg shadow-[#003262]/25 scale-[1.02]"
+                    : "text-gray-600 hover:text-gray-900 hover:bg-white/60"
+                }`}
+              >
+                <span className={`w-2 h-2 rounded-full shrink-0 ${activeCategory === "admissions" ? "bg-[#FDB515]" : "bg-gray-400"}`} />
+                <span>ADMISSION</span>
               </button>
             </div>
           </div>
@@ -328,28 +354,50 @@ export default function SchoolAtAGlance() {
                 <p className="text-gray-500 text-sm">Select a learning stage to explore its academic framework and experiential activities.</p>
               </div>
 
-              <div className="inline-flex p-1 bg-gray-100 rounded-xl border border-gray-200 shrink-0">
+              <div className="inline-flex p-1 bg-gray-100 rounded-xl border border-gray-200 shrink-0 flex-wrap sm:flex-nowrap">
                 <button
                   type="button"
                   onClick={() => setActiveStage("foundational")}
-                  className={`px-4 sm:px-6 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  className={`px-3 sm:px-4 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     activeStage === "foundational"
                       ? "bg-[#003262] text-white shadow"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
-                  Foundational (Nursery – Gr II)
+                  Foundational (Nursery–Gr II)
                 </button>
                 <button
                   type="button"
                   onClick={() => setActiveStage("primary")}
-                  className={`px-4 sm:px-6 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  className={`px-3 sm:px-4 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     activeStage === "primary"
                       ? "bg-[#003262] text-white shadow"
                       : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
-                  Primary (Grades III – V)
+                  Primary (Grades III–V)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveStage("middle")}
+                  className={`px-3 sm:px-4 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                    activeStage === "middle"
+                      ? "bg-[#003262] text-white shadow"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  Middle (Grades VI–VIII)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveStage("senior")}
+                  className={`px-3 sm:px-4 py-2.5 rounded-lg font-bold text-xs uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                    activeStage === "senior"
+                      ? "bg-[#003262] text-white shadow"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  Senior (Grades IX–X)
                 </button>
               </div>
             </div>
@@ -734,14 +782,443 @@ export default function SchoolAtAGlance() {
                     <div className="p-5 rounded-xl bg-gradient-to-br from-blue-50/40 to-white border border-blue-200/80 flex flex-col justify-between">
                       <div>
                         <span className="text-xs font-black text-[#003262] uppercase tracking-wider block mb-2">Booklet 3</span>
-                        <h6 className="font-bold text-gray-900 text-base mb-2">Learner&apos;s Corner</h6>
+                        <h6 className="font-bold text-gray-900 text-base mb-2">Learner&apos;s Comate</h6>
                         <ul className="text-gray-600 text-xs space-y-1.5 leading-relaxed">
                           <li>• Subject-wise booklet of assignments.</li>
                           <li>• An aid to enhance student learning.</li>
-                          <li>• Helps students prepare for, understand, and apply concepts.</li>
+                          <li>• Helps students to prepare for and understand lessons, and apply concepts.</li>
                         </ul>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* 4. Value & Cultural Integration */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-2 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#003262]" />
+                    Value & Cultural Integration
+                  </h5>
+                  <p className="text-gray-500 text-sm mb-6">Instilling cultural grounding, national pride, and global responsibility through experiential arts.</p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🕉️ Shlok / Doha Recitation</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">
+                        Builds focus and pronunciation, and provides cultural grounding and clarity of speech.
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🇮🇳 Know Your Country</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">
+                        Map work and presentations inspire patriotism, cultural appreciation, and geographic awareness.
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🎭 Art-Integrated Learning (AIL)</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">
+                        Dance, music, theatre, and role play bring academics alive while celebrating Indian art and culture.
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🎨 Art-Integrated Project</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">
+                        CBSE-aligned cultural themes integrate subjects while developing research, critical thinking, teamwork, and presentation skills.
+                      </p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60 md:col-span-2 lg:col-span-2">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🌍 SDG Integration</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">
+                        UN Sustainable Development Goals integrated into assignments develop globally-minded, environmentally responsible, and empathetic students.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 5. Holistic Growth & Evaluation */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-2 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FDB515]" />
+                    Holistic Growth & Evaluation
+                  </h5>
+                  <p className="text-gray-500 text-sm mb-6">Continuous 360-degree assessment mapping scholastic and co-scholastic progress.</p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-5 rounded-xl border-l-4 border-l-[#003262] border border-gray-200 bg-gray-50">
+                      <h6 className="font-bold text-[#003262] text-base mb-1.5">📋 Holistic Progress Card (HPC)</h6>
+                      <p className="text-gray-700 text-xs leading-relaxed">
+                        A holistic progress report card helps students by providing comprehensive feedback on all aspects of their development, enabling personalized learning and well-rounded growth beyond academics.
+                      </p>
+                    </div>
+                    <div className="p-5 rounded-xl border-l-4 border-l-[#FDB515] border border-gray-200 bg-gray-50">
+                      <h6 className="font-bold text-[#003262] text-base mb-1.5">📝 Regular & Annual Assessments</h6>
+                      <p className="text-gray-700 text-xs leading-relaxed">
+                        Monthly, Half-Yearly, and Annual Assessments. Regular assessments help in monitoring progress, identifying learning gaps, and ensuring holistic student growth.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {/* ═════════════════════════════════════════════════════════════════
+                STAGE 3: MIDDLE STAGE (GRADES VI – VIII)
+               ═════════════════════════════════════════════════════════════════ */}
+            {activeStage === "middle" && (
+              <div className="space-y-8 animate-fadeIn">
+                
+                {/* Header Banner */}
+                <div className="bg-gradient-to-r from-[#003262]/10 via-amber-50/50 to-white p-6 md:p-8 rounded-2xl border-l-4 border-[#003262] border border-blue-200/60 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div>
+                    <span className="inline-block px-3 py-1 rounded bg-[#003262] text-white font-black text-xs uppercase tracking-wider mb-2">
+                      Academic Approach & Innovation
+                    </span>
+                    <h4 className="text-2xl md:text-3xl font-black text-[#003262]" style={{ fontFamily: 'var(--font-heading)' }}>
+                      Middle Stage (Grades VI–VIII)
+                    </h4>
+                    <p className="text-gray-700 text-sm md:text-base mt-2 max-w-3xl">
+                      <strong>Pedagogy:</strong> Competency-based learning with a strong emphasis on critical thinking, innovation, and self-reliance.
+                    </p>
+                    <p className="text-gray-700 text-sm md:text-base mt-1 max-w-3xl">
+                      <strong>Learning Focus:</strong> Design thinking, financial literacy, and interdisciplinary projects that encourage innovation and independence.
+                    </p>
+                  </div>
+                  <Link href="/admissions" className="btn-primary py-2.5 px-6 text-xs font-bold uppercase tracking-wider shrink-0 self-start md:self-center">
+                    Enrol in Middle Stage
+                  </Link>
+                </div>
+
+                {/* Academic Framework (Subjects) */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-4 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#003262]" />
+                    Academic Framework
+                  </h5>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-5 rounded-xl bg-gray-50 border border-gray-200">
+                      <span className="text-xs font-extrabold text-[#003262] uppercase tracking-widest block mb-3">Main Subjects</span>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          "English", "Hindi", "Sanskrit", "Urdu",
+                          "Mathematics", "Physics", "Chemistry", "Biology",
+                          "History", "Civics", "Geography"
+                        ].map((sub) => (
+                          <span key={sub} className="px-3.5 py-1.5 bg-white border border-gray-300 rounded-lg text-sm font-bold text-gray-800 shadow-sm">
+                            {sub}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="p-5 rounded-xl bg-blue-50/50 border border-blue-200/60">
+                      <span className="text-xs font-extrabold text-[#003262] uppercase tracking-widest block mb-3">Additional Subjects</span>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          "Music", "Dance", "Drawing", "Games",
+                          "Value Education", "Career Awareness", "Skill Based Education",
+                          "Robotics", "GK", "Computer", "etc."
+                        ].map((sub) => (
+                          <span key={sub} className="px-3 py-1.5 bg-white border border-blue-200 rounded-lg text-xs font-semibold text-blue-950 shadow-sm">
+                            {sub}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 1. Skill-Based Education and Learning with Experience */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-2 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FDB515]" />
+                    Skill-Based Education & Learning with Experience
+                  </h5>
+                  <p className="text-gray-500 text-sm mb-6">Empowering students with practical knowledge, design thinking, and 21st-century competencies.</p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">💡 Skill-Based Education</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Design thinking empowers students with practical knowledge and 21st-century skills for real-world success.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🎙️ Listening & Speaking Skills</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Structured sessions and role-plays help students become confident communicators who actively participate in academic and social settings.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🧠 Bloom’s Taxonomy & Question-Making</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Through question-making activities, students develop higher-order thinking, encouraging analysis, evaluation, creation, and self-driven inquiry.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🔢 Jodo Gyan</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Hands-on math activities make numbers logical, practical, fun, and deeply understood.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">📐 Math Walk</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Assignments are designed to engage students with mathematical concepts in a real-world context through observation and interaction with their environment.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">📊 Class Project</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Students explore a topic in depth, develop research and presentation skills, and showcase their creativity.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Value & Cultural Integration */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-2 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#003262]" />
+                    Value & Cultural Integration
+                  </h5>
+                  <p className="text-gray-500 text-sm mb-6">Bridging heritage and contemporary learning through experiential expeditions and culture.</p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🕉️ Shlok / Doha Recitation</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Builds focus and pronunciation, and provides cultural grounding and clarity of speech.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🇮🇳 Know Your Country</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Map work and presentations inspire patriotism, cultural awareness, and geographic insight.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🏛️ History Expedition</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Brings the past alive with field visits, artifacts analysis, and experiential historical learning.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🎭 Art Integrated Learning (AIL)</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Academics come alive through dance, music, role play, and theatre, connecting the curriculum with art and cultural expression.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🎨 Art Integrated Project</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">CBSE-aligned cultural themes integrate subjects while developing research, critical thinking, teamwork, and presentation skills.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🌍 SDG Integration</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Develops globally minded, responsible students sensitive to sustainable community development.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Assessment & Evaluation */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-2 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FDB515]" />
+                    Assessment & Evaluation
+                  </h5>
+                  <p className="text-gray-500 text-sm mb-6">Continuous and comprehensive evaluation measuring competence and conceptual clarity.</p>
+
+                  <div className="p-5 rounded-xl border-l-4 border-l-[#003262] border border-gray-200 bg-gray-50">
+                    <h6 className="font-bold text-[#003262] text-base mb-1.5">📝 Weekly / Monthly, Half Yearly & Annual Assessments</h6>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      Regular assessments help in monitoring progress, identifying learning gaps, and ensuring holistic student growth across scholastic and co-scholastic domains.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            )}
+
+            {/* ═════════════════════════════════════════════════════════════════
+                STAGE 4: SENIOR STAGE (GRADES IX – X)
+               ═════════════════════════════════════════════════════════════════ */}
+            {activeStage === "senior" && (
+              <div className="space-y-8 animate-fadeIn">
+                
+                {/* Header Banner */}
+                <div className="bg-gradient-to-r from-[#003262]/10 via-amber-50/50 to-white p-6 md:p-8 rounded-2xl border-l-4 border-[#003262] border border-blue-200/60 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="inline-block px-3 py-1 rounded bg-[#003262] text-white font-black text-xs uppercase tracking-wider">
+                        IGNITE
+                      </span>
+                      <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">
+                        Empowering Futures • Igniting Minds • Creating Global Citizens
+                      </span>
+                    </div>
+                    <h4 className="text-2xl md:text-3xl font-black text-[#003262]" style={{ fontFamily: 'var(--font-heading)' }}>
+                      Senior Stage (Grades IX–X)
+                    </h4>
+                    <p className="text-gray-700 text-sm md:text-base mt-2 max-w-3xl">
+                      <strong>Pedagogy:</strong> A blend of personalized mentoring and future-focused academics that shapes lifelong learners and future-ready leaders.
+                    </p>
+                    <p className="text-gray-700 text-sm md:text-base mt-1 max-w-3xl">
+                      <strong>Learning Focus:</strong> Career guidance, internships, competitive exam training, and global exposure equip learners with real-world readiness and leadership skills.
+                    </p>
+                  </div>
+                  <Link href="/admissions" className="btn-primary py-2.5 px-6 text-xs font-bold uppercase tracking-wider shrink-0 self-start md:self-center">
+                    Enrol in Senior Stage
+                  </Link>
+                </div>
+
+                {/* Academic Framework (CBSE Curriculum) */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-4 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#003262]" />
+                    Academic Framework – CBSE Curriculum (Classes IX–X)
+                  </h5>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-5 rounded-xl bg-gray-50 border border-gray-200">
+                      <span className="text-xs font-extrabold text-[#003262] uppercase tracking-widest block mb-3">Main Subjects</span>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          "English", "Hindi", "Sanskrit", "Urdu",
+                          "Mathematics", "Physics", "Chemistry", "Biology",
+                          "History", "Civics", "Geography", "Economics"
+                        ].map((sub) => (
+                          <span key={sub} className="px-3.5 py-1.5 bg-white border border-gray-300 rounded-lg text-sm font-bold text-gray-800 shadow-sm">
+                            {sub}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="p-5 rounded-xl bg-blue-50/50 border border-blue-200/60">
+                      <span className="text-xs font-extrabold text-[#003262] uppercase tracking-widest block mb-3">CCA (Co-Curricular Activities)</span>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          "Art Education", "Work Education", "Physical Education"
+                        ].map((sub) => (
+                          <span key={sub} className="px-3.5 py-1.5 bg-white border border-blue-200 rounded-lg text-xs font-bold text-blue-950 shadow-sm">
+                            {sub}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 1. The Birla Heritage Edge – What Sets Us Apart */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-2 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FDB515]" />
+                    The Birla Heritage Edge – What Sets Us Apart
+                  </h5>
+                  <p className="text-gray-500 text-sm mb-6">Real-world internships, skill mastery, and innovative problem solving.</p>
+
+                  <div className="p-5 rounded-xl border-l-4 border-l-[#003262] border border-gray-200 bg-gradient-to-r from-blue-50/40 via-white to-gray-50 mb-6">
+                    <h6 className="font-bold text-[#003262] text-base mb-1.5">🚀 Internship Programmes</h6>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      We offer real-world exposure through various clubs of our school, including <strong>Coding, Debate, Literature, and many more</strong>, to foster diverse interests and leadership readiness.
+                    </p>
+                  </div>
+
+                  <h6 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Skill-Based & Experiential</h6>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">⏱️ Time Management Mastery</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Teaches productivity skills essential for both academics and real-world success.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">📐 Math Walk</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Students engage with and learn mathematical concepts by observing and interacting with real-world environments.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">✨ Golden Ratio</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">An exploration of the beauty and harmony of numbers, including their presence in art, nature, and design.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🎙️ ASL (Speaking & Listening)</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Activities for Speaking & Listening develop confident articulation and active listening skills.</p>
+                    </div>
+                  </div>
+
+                  <h6 className="text-xs font-black text-gray-400 uppercase tracking-widest mb-3">Creative Thinking, Competency Based & Problem Solving</h6>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">📚 Enrichment Booklets</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Competency-Based questions, Logical Reasoning, and Olympiad Preparation.</p>
+                    </div>
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">📖 Learner’s Comate</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Concept-based assignments specifically designed for deeper learning and mastery.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Creative & Cultural Integration */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-2 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#003262]" />
+                    Creative & Cultural Integration
+                  </h5>
+                  <p className="text-gray-500 text-sm mb-6">Holistic interdisciplinarity merging academics with fine arts and reading habits.</p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🎭 Art Integrated Learning (AIL)</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Merges academics with visual arts, drama, dance, and mock parliament to make learning more engaging.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🎨 Art Integrated Projects (AIP)</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Investigatory projects guided by CBSE connecting curriculum subjects through art.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">📖 Reading for Pleasure (RFP)</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">A specialized program dedicated to cultivating lifelong reading habits.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🌐 Interdisciplinary Projects (IDP)</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Blends multiple subjects into one cohesive activity for holistic conceptual understanding.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Labs & Conclave – Centres of Exploration & Experiential Tools */}
+                <div className="bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-sm">
+                  <h5 className="text-lg font-bold text-[#003262] uppercase tracking-wider mb-2 flex items-center gap-2" style={{ fontFamily: 'var(--font-heading)' }}>
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#FDB515]" />
+                    Labs & Conclave – Centres of Exploration
+                  </h5>
+                  <p className="text-gray-500 text-sm mb-6">
+                    Beyond books, interactive learning journeys promote academic excellence, collaborative bonding, and motor skills refinement.
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">⚡ Physics Lab</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">A space for practical experiments bringing physical laws and kinematics to life.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🧪 Chemistry Lab</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Provides hands-on experience with chemical reactions, titrations, and molecular innovations.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">🔬 Biology Lab</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">Dedicated to exploring life sciences, cellular structures, and botanical research.</p>
+                    </div>
+
+                    <div className="p-4 rounded-xl border border-gray-200 bg-gray-50/60">
+                      <h6 className="font-bold text-[#003262] text-sm mb-1">💻 Computer Lab</h6>
+                      <p className="text-gray-600 text-xs leading-relaxed">A cutting-edge hub for programming, Artificial Intelligence, and digital creativity.</p>
+                    </div>
+                  </div>
+
+                  <div className="p-5 rounded-xl border-l-4 border-l-[#FDB515] border border-gray-200 bg-amber-50/40">
+                    <h6 className="font-bold text-[#003262] text-sm mb-1">🏛️ ETM (Education Through Monuments)</h6>
+                    <p className="text-gray-700 text-xs leading-relaxed">
+                      Connects historical events with rich cultural heritage through site visits, architectural inquiry, and hands-on investigative research.
+                    </p>
                   </div>
                 </div>
 
@@ -760,15 +1237,400 @@ export default function SchoolAtAGlance() {
               <div className="flex items-center gap-3">
                 <button
                   type="button"
-                  onClick={() => setActiveStage(activeStage === "foundational" ? "primary" : "foundational")}
+                  onClick={() => {
+                    if (activeStage === "foundational") setActiveStage("primary");
+                    else if (activeStage === "primary") setActiveStage("middle");
+                    else if (activeStage === "middle") setActiveStage("senior");
+                    else setActiveStage("foundational");
+                  }}
                   className="btn-outline-primary py-2 px-4 text-xs font-bold uppercase tracking-wider"
                 >
-                  Switch to {activeStage === "foundational" ? "Primary Stage" : "Foundational Stage"} &rarr;
+                  Next: {
+                    activeStage === "foundational" ? "Primary Stage" :
+                    activeStage === "primary" ? "Middle Stage" :
+                    activeStage === "middle" ? "Senior Stage" : "Foundational Stage"
+                  } &rarr;
                 </button>
-                <Link href="/about-us/curriculum" className="btn-primary py-2 px-5 text-xs font-bold uppercase tracking-wider">
-                  Full Curriculum Framework
-                </Link>
+                <button
+                  type="button"
+                  onClick={() => setActiveCategory("thrive")}
+                  className="btn-primary py-2 px-5 text-xs font-bold uppercase tracking-wider"
+                >
+                  Explore THRIVE (Beyond Academics) &rarr;
+                </button>
               </div>
+            </div>
+
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            OPTION 3: THRIVE – BEYOND ACADEMICS (Parallel Curriculum)
+           ══════════════════════════════════════════════════════════════════════ */}
+        {activeCategory === "thrive" && (
+          <div className="animate-fadeIn space-y-10">
+
+            {/* Hero Banner */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-[#003262] via-[#002244] to-[#001428] rounded-3xl p-8 sm:p-12 text-white shadow-2xl border-t-4 border-[#FDB515]">
+              <div className="relative z-10 max-w-4xl">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FDB515]/20 border border-[#FDB515]/40 mb-4">
+                  <span className="w-2 h-2 rounded-full bg-[#FDB515] animate-pulse" />
+                  <span className="text-[#FDB515] font-black text-xs uppercase tracking-widest">
+                    Parallel Curriculum
+                  </span>
+                </div>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                  THRIVE – Beyond Academics
+                </h3>
+                <p className="text-blue-100 text-base sm:text-lg leading-relaxed max-w-3xl">
+                  At Birla Heritage, education is more than academics—it is about discovering passions, honing skills, and building character. Thrive represents our parallel curriculum, offering a rich blend of sports, arts, clubs, leadership platforms, and experiential learning opportunities.
+                </p>
+                <p className="text-blue-200/90 text-sm sm:text-base leading-relaxed max-w-3xl mt-3">
+                  Students participate in focused activities, co-curricular events, evening sports, debates, creative writing, music, skill camps, and community projects. These experiences allow them to explore interests, uncover hidden talents, and build resilience.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link href="/admissions" className="btn-primary py-3 px-8 text-sm font-bold uppercase tracking-wider">
+                    Join Birla Heritage &rarr;
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setActiveCategory("grow")}
+                    className="px-6 py-3 rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs font-bold uppercase tracking-wider transition-all"
+                  >
+                    View Academic Stages (IGNITE)
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Pedagogy & Approach Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm border-l-4 border-l-[#003262]">
+                <div className="w-12 h-12 rounded-xl bg-[#003262]/10 text-[#003262] flex items-center justify-center font-black text-xl mb-4">
+                  🎯
+                </div>
+                <h4 className="text-xl font-bold text-[#003262] mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Choice-Based, Skill-Focused & Mentor-Led Pedagogy
+                </h4>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  Thrive is built on a choice-based, skill-focused, and mentor-led approach. Students select from a wide range of clubs and activities, each guided by expert mentors in small groups to ensure deep, personalized learning.
+                </p>
+                <div className="grid grid-cols-3 gap-2 pt-2 border-t border-gray-100 text-center">
+                  <div className="p-2.5 bg-gray-50 rounded-lg">
+                    <span className="block text-xs font-bold text-[#003262]">Choice-Based</span>
+                    <span className="text-[11px] text-gray-500">Student agency</span>
+                  </div>
+                  <div className="p-2.5 bg-gray-50 rounded-lg">
+                    <span className="block text-xs font-bold text-[#003262]">Skill-Focused</span>
+                    <span className="text-[11px] text-gray-500">21st-century</span>
+                  </div>
+                  <div className="p-2.5 bg-gray-50 rounded-lg">
+                    <span className="block text-xs font-bold text-[#003262]">Mentor-Led</span>
+                    <span className="text-[11px] text-gray-500">Small cohorts</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm border-l-4 border-l-[#FDB515]">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center font-black text-xl mb-4">
+                  🌟
+                </div>
+                <h4 className="text-xl font-bold text-[#003262] mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Cultural Weeks, Camps & Co-Curricular Initiatives
+                </h4>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  Festivals, cultural weeks, camps, and co-curricular initiatives further enrich their journey—nurturing confidence, creativity, teamwork, and leadership across all grades.
+                </p>
+                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-gray-100">
+                  <div className="p-2.5 bg-amber-50/50 rounded-lg border border-amber-200/50">
+                    <span className="block text-xs font-bold text-amber-900">Confidence & Creativity</span>
+                    <span className="text-[11px] text-amber-800/80">Expressive arts & stages</span>
+                  </div>
+                  <div className="p-2.5 bg-amber-50/50 rounded-lg border border-amber-200/50">
+                    <span className="block text-xs font-bold text-amber-900">Teamwork & Leadership</span>
+                    <span className="text-[11px] text-amber-800/80">Collaborative platforms</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Thrive Pillars Grid */}
+            <div className="bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-sm">
+              <div className="text-center max-w-2xl mx-auto mb-8">
+                <span className="text-xs font-extrabold text-[#FDB515] uppercase tracking-widest block mb-1">Pillars of Exploration</span>
+                <h4 className="text-2xl font-black text-[#003262]" style={{ fontFamily: 'var(--font-heading)' }}>
+                  What Students Experience in Thrive
+                </h4>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="p-5 rounded-2xl bg-gray-50/70 border border-gray-200 hover:shadow-md transition-all">
+                  <span className="text-2xl mb-2 block">⚽</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-1.5">Evening Sports & Fitness</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    Athletics, football, cricket, basketball, badminton, and yoga building athletic stamina and physical resilience.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-gray-50/70 border border-gray-200 hover:shadow-md transition-all">
+                  <span className="text-2xl mb-2 block">🎭</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-1.5">Performing & Visual Arts</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    Music, dance, theatre, classical arts, and creative exhibitions fostering aesthetic appreciation.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-gray-50/70 border border-gray-200 hover:shadow-md transition-all">
+                  <span className="text-2xl mb-2 block">🎙️</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-1.5">Debates & Literature Club</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    Creative writing, elocution, Model UN, and parliamentary debates creating articulate, persuasive thinkers.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-gray-50/70 border border-gray-200 hover:shadow-md transition-all">
+                  <span className="text-2xl mb-2 block">🤝</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-1.5">Community & Skill Camps</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    Social outreach, environmental stewardship, SDG action projects, and specialized life-skill bootcamps.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Back to other sections footer */}
+            <div className="pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <button
+                type="button"
+                onClick={() => setActiveCategory("grow")}
+                className="text-gray-500 hover:text-[#003262] text-xs font-bold uppercase tracking-wider underline cursor-pointer"
+              >
+                &larr; Back to Academic Framework (IGNITE)
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveCategory("admissions")}
+                className="btn-primary py-2.5 px-6 text-xs font-bold uppercase tracking-wider"
+              >
+                View Admission Criteria & Guidelines &rarr;
+              </button>
+            </div>
+
+          </div>
+        )}
+
+        {/* ══════════════════════════════════════════════════════════════════════
+            OPTION 4: ADMISSION (Age Criteria, Documents, Deadlines & Contacts)
+           ══════════════════════════════════════════════════════════════════════ */}
+        {activeCategory === "admissions" && (
+          <div className="animate-fadeIn space-y-10">
+
+            {/* Hero Header */}
+            <div className="bg-gradient-to-r from-[#003262] via-[#002855] to-[#001f3f] rounded-3xl p-8 sm:p-12 text-white shadow-xl border-t-4 border-[#FDB515]">
+              <div className="max-w-4xl">
+                <span className="inline-block px-3.5 py-1.5 rounded-full bg-[#FDB515]/20 border border-[#FDB515]/40 text-[#FDB515] font-black text-xs uppercase tracking-widest mb-4">
+                  Admissions Open 2027–28
+                </span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Admission Criteria & Guidelines
+                </h3>
+                <p className="text-blue-100 text-base sm:text-lg leading-relaxed max-w-3xl">
+                  Clear, transparent guidelines designed to ensure every applicant is placed in an age-appropriate learning environment with seamless documentation support.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link href="/admissions" className="btn-primary py-3 px-8 text-sm font-bold uppercase tracking-wider shadow-lg">
+                    Fill Online Admission Form &rarr;
+                  </Link>
+                  <Link href="/contact-us" className="px-6 py-3 rounded-lg border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs font-bold uppercase tracking-wider transition-all">
+                    Contact Admissions Office
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Grid 1: Age Criteria & Deadlines */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              
+              {/* Age Criteria Table Card */}
+              <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-md flex flex-col justify-between">
+                <div>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-gray-200">
+                    <div>
+                      <h4 className="text-2xl font-black text-[#003262]" style={{ fontFamily: 'var(--font-heading)' }}>
+                        Age Criteria
+                      </h4>
+                      <p className="text-gray-500 text-xs sm:text-sm mt-1">
+                        Candidates must fulfil the following age criteria as on <strong className="text-gray-800">31st July</strong>.
+                      </p>
+                    </div>
+                    <span className="self-start sm:self-center px-3.5 py-1.5 bg-amber-50 text-[#003262] text-xs font-black rounded-lg border border-amber-200/80 shadow-sm whitespace-nowrap">
+                      📅 As on 31st July
+                    </span>
+                  </div>
+
+                  {/* High Visibility Structured Table */}
+                  <div className="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+                    <table className="w-full text-left text-sm border-collapse">
+                      <thead>
+                        <tr className="bg-[#003262] text-white text-xs uppercase tracking-wider font-extrabold">
+                          <th className="py-3.5 px-5 font-bold border-r border-[#002244]">Class / Grade</th>
+                          <th className="py-3.5 px-5 font-bold text-center sm:text-left">Minimum Required Age</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 text-gray-800">
+                        {[
+                          { grade: "Nursery", age: "3 years" },
+                          { grade: "KG – I (JKG)", age: "4 years" },
+                          { grade: "KG – II (SKG)", age: "5 years" },
+                          { grade: "Class I", age: "6 years" },
+                          { grade: "Class II", age: "7 years" },
+                          { grade: "Class III", age: "8 years" },
+                          { grade: "Class IV", age: "9 years" },
+                          { grade: "Class V", age: "10 years" },
+                          { grade: "Class VI", age: "11 years" },
+                          { grade: "Class VII", age: "12 years" },
+                          { grade: "Class VIII", age: "13 years" },
+                          { grade: "Class IX", age: "14 years" },
+                        ].map((row, idx) => (
+                          <tr
+                            key={row.grade}
+                            className={`transition-colors hover:bg-amber-50/40 ${
+                              idx % 2 === 0 ? "bg-white" : "bg-gray-50"
+                            }`}
+                          >
+                            <td className="py-3 px-5 font-extrabold text-[#003262] text-sm border-r border-gray-200">
+                              {row.grade}
+                            </td>
+                            <td className="py-3 px-5 font-bold text-gray-900 text-sm">
+                              <span className="inline-block px-3 py-1 rounded-full bg-blue-50 text-[#003262] border border-blue-200/60 font-black text-xs sm:text-sm">
+                                {row.age}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              {/* Deadlines & Important Rules */}
+              <div className="lg:col-span-5 flex flex-col gap-6">
+                
+                <div className="bg-gradient-to-br from-amber-500/10 via-amber-50 to-white p-6 sm:p-8 rounded-3xl border border-amber-200 shadow-sm border-l-4 border-l-[#FDB515]">
+                  <span className="text-xs font-black text-amber-900 uppercase tracking-widest block mb-2">Important Deadlines</span>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Deadline for Admission
+                  </h4>
+                  <ul className="space-y-3 text-sm text-gray-700 leading-relaxed">
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-red-500 font-bold text-base mt-[-2px]">•</span>
+                      <span>The seat gets <strong>automatically cancelled</strong> if admission is not taken within <strong>7 days</strong> of the result declaration.</span>
+                    </li>
+                    <li className="flex items-start gap-2.5">
+                      <span className="text-[#003262] font-bold text-base mt-[-2px]">•</span>
+                      <span>In general, there is <strong>no last date</strong> for submitting an application for admission. It completely depends on the availability of seats.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-white p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-sm border-l-4 border-l-[#003262]">
+                  <span className="text-xs font-black text-[#003262] uppercase tracking-widest block mb-2">Contact Admissions Office</span>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Need Assistance?
+                  </h4>
+                  <div className="space-y-3 text-sm text-gray-600">
+                    <p className="flex items-center gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-[#003262]/10 text-[#003262] flex items-center justify-center text-sm font-bold">📞</span>
+                      <span>+91 91228 99149 / +91 76338 00196</span>
+                    </p>
+                    <p className="flex items-center gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-[#003262]/10 text-[#003262] flex items-center justify-center text-sm font-bold">✉️</span>
+                      <span>info@birlaheritagesiwan.com</span>
+                    </p>
+                    <p className="flex items-center gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-[#003262]/10 text-[#003262] flex items-center justify-center text-sm font-bold">📍</span>
+                      <span>Birla Heritage International School, Siwan, Bihar</span>
+                    </p>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-gray-100">
+                    <Link href="/admissions" className="btn-primary w-full py-2.5 text-xs font-bold uppercase tracking-wider text-center block">
+                      Go to Online Admission Form &rarr;
+                    </Link>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Documents Required */}
+            <div className="bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-sm">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-3 h-8 bg-[#003262] rounded-full" />
+                <div>
+                  <h4 className="text-2xl font-black text-[#003262]" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Documents Required
+                  </h4>
+                  <p className="text-gray-500 text-xs mt-0.5">Please ensure all required original documents and certificates are arranged on time.</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="p-5 rounded-2xl bg-gray-50/80 border border-gray-200">
+                  <span className="text-2xl mb-2 block">📜</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-2">Birth Certificate / T.C.</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    A student must produce evidence of date of birth (Birth Certificate) for <strong>Nursery to Class I</strong>, and a <strong>T.C.</strong> of the previous school from <strong>Class I upwards</strong> by the second week of April, failing which admission will stand cancelled.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-gray-50/80 border border-gray-200">
+                  <span className="text-2xl mb-2 block">📑</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-2">Previous Mark Sheet</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    The original and photocopy of the previous school&apos;s mark sheet needs to be submitted by the <strong>second week of April</strong>, failing which the admission will stand cancelled.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-gray-50/80 border border-gray-200">
+                  <span className="text-2xl mb-2 block">🖋️</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-2">District Countersign (Class VII+)</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    The school leaving certificate of a student joining school from <strong>Class VII upwards</strong> must be countersigned by the educational authorities of the district in which the previous school is situated.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-gray-50/80 border border-gray-200">
+                  <span className="text-2xl mb-2 block">🏫</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-2">Same School TC & Marksheet</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    The Transfer Certificate (TC) and Marksheet have to be issued by the <strong>exact same previous school</strong>.
+                  </p>
+                </div>
+
+                <div className="p-5 rounded-2xl bg-gray-50/80 border border-gray-200 md:col-span-2 lg:col-span-2">
+                  <span className="text-2xl mb-2 block">⚠️</span>
+                  <h5 className="font-bold text-[#003262] text-sm mb-2">Class Placement Strictness</h5>
+                  <p className="text-gray-600 text-xs leading-relaxed">
+                    Please note that a student will be admitted <strong>only to the class mentioned on the transfer certificate</strong> and to no higher class, nor will a student be promoted before the end of a regular school calendar year.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Back to other sections footer */}
+            <div className="pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <button
+                type="button"
+                onClick={() => setActiveCategory("heritage")}
+                className="text-gray-500 hover:text-[#003262] text-xs font-bold uppercase tracking-wider underline cursor-pointer"
+              >
+                &larr; Back to We are Birla Heritage
+              </button>
+              <Link href="/admissions" className="btn-primary py-2.5 px-6 text-xs font-bold uppercase tracking-wider">
+                Open Admission Form &rarr;
+              </Link>
             </div>
 
           </div>

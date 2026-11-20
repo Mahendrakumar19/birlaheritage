@@ -34,7 +34,18 @@ export default function AdmissionsPage() {
   const onChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
+    const { name } = e.target;
+    let { value } = e.target;
+
+    // Strict numerical input and length limits for Aadhaar (12 digits) and Phone (10 digits)
+    if (name === "studentAadhaar") {
+      value = value.replace(/\D/g, "").slice(0, 12);
+    } else if (name === "phone") {
+      value = value.replace(/\D/g, "").slice(0, 10);
+    } else if (name === "pinCode") {
+      value = value.replace(/\D/g, "").slice(0, 6);
+    }
+
     setForm((prev) => ({ ...prev, [name]: value }));
     if (fieldErrors[name]) {
       setFieldErrors((prev) => { const next = { ...prev }; delete next[name]; return next; });
@@ -137,29 +148,46 @@ export default function AdmissionsPage() {
               {/* Row 2 */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-gray-700 text-[13px] font-medium">Student aadhaar number *</label>
-                  <input name="studentAadhaar" value={form.studentAadhaar} onChange={onChange} type="text" placeholder="xxxx xxxx xxxx" className="w-full bg-gray-50 border border-gray-300 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#003262] py-2.5 px-3 rounded-none" required />
+                  <label className="text-gray-700 text-[13px] font-medium flex justify-between">
+                    <span>Student Aadhaar Number *</span>
+                    <span className="text-gray-400 text-xs font-normal">
+                      {form.studentAadhaar.length}/12 digits
+                    </span>
+                  </label>
+                  <input
+                    name="studentAadhaar"
+                    value={form.studentAadhaar}
+                    onChange={onChange}
+                    type="text"
+                    inputMode="numeric"
+                    maxLength={12}
+                    pattern="\d{12}"
+                    placeholder="12 digit Aadhaar number"
+                    className={`w-full bg-gray-50 border text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#003262] py-2.5 px-3 rounded-none ${fieldErrors.studentAadhaar ? 'border-red-500' : 'border-gray-300'}`}
+                    required
+                  />
+                  {fieldErrors.studentAadhaar && <span className="text-red-500 text-[11px]">{fieldErrors.studentAadhaar}</span>}
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label className="text-gray-700 text-[13px] font-medium">Grade *</label>
+                  <label className="text-gray-700 text-[13px] font-medium">Grade / Class *</label>
                   <div className="relative">
                     <select name="grade" value={form.grade} onChange={onChange} className={`w-full bg-gray-50 border text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#003262] py-2.5 px-3 rounded-none appearance-none ${fieldErrors.grade ? 'border-red-500' : 'border-gray-300'}`} required>
                       <option value="" disabled hidden>Select Class</option>
-                      <option value="nursery">Nursery</option>
-                      <option value="lkg">L.K.G</option>
-                      <option value="ukg">U.K.G</option>
-                      <option value="1">Class 1</option>
-                      <option value="2">Class 2</option>
-                      <option value="3">Class 3</option>
-                      <option value="4">Class 4</option>
-                      <option value="5">Class 5</option>
-                      <option value="6">Class 6</option>
-                      <option value="7">Class 7</option>
-                      <option value="8">Class 8</option>
-                      <option value="9">Class 9</option>
-                      <option value="10">Class 10</option>
-                      <option value="11">Class 11</option>
-                      <option value="12">Class 12</option>
+                      <option value="Nursery">Nursery</option>
+                      <option value="JKG">JKG</option>
+                      <option value="SKG">SKG</option>
+                      <option value="Class I">Class I</option>
+                      <option value="Class II">Class II</option>
+                      <option value="Class III">Class III</option>
+                      <option value="Class IV">Class IV</option>
+                      <option value="Class V">Class V</option>
+                      <option value="Class VI">Class VI</option>
+                      <option value="Class VII">Class VII</option>
+                      <option value="Class VIII">Class VIII</option>
+                      <option value="Class IX">Class IX</option>
+                      <option value="Class X">Class X</option>
+                      <option value="Class XI">Class XI</option>
+                      <option value="Class XII">Class XII</option>
                     </select>
                     <svg className="w-4 h-4 absolute right-3 top-3.5 pointer-events-none text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 9l-7 7-7-7"></path></svg>
                   </div>
@@ -174,12 +202,38 @@ export default function AdmissionsPage() {
               {/* Row 3 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="text-gray-700 text-[13px] font-medium">Phone *</label>
-                  <input name="phone" value={form.phone} onChange={onChange} type="tel" placeholder="Phone" className="w-full bg-gray-50 border border-gray-300 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#003262] py-2.5 px-3 rounded-none" required />
+                  <label className="text-gray-700 text-[13px] font-medium flex justify-between">
+                    <span>Phone Number *</span>
+                    <span className="text-gray-400 text-xs font-normal">
+                      {form.phone.length}/10 digits
+                    </span>
+                  </label>
+                  <input
+                    name="phone"
+                    value={form.phone}
+                    onChange={onChange}
+                    type="tel"
+                    inputMode="numeric"
+                    maxLength={10}
+                    pattern="[6-9]\d{9}"
+                    placeholder="10 digit mobile number"
+                    className={`w-full bg-gray-50 border text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-[#003262] py-2.5 px-3 rounded-none ${fieldErrors.phone ? 'border-red-500' : 'border-gray-300'}`}
+                    required
+                  />
+                  {fieldErrors.phone && <span className="text-red-500 text-[11px]">{fieldErrors.phone}</span>}
                 </div>
                 <div className="flex flex-col gap-2">
                   <label className="text-gray-700 text-[13px] font-medium">Email *</label>
-                  <input name="email" value={form.email} onChange={onChange} type="email" className="w-full bg-gray-50 border border-gray-300 text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#003262] py-2.5 px-3 rounded-none" required />
+                  <input
+                    name="email"
+                    value={form.email}
+                    onChange={onChange}
+                    type="email"
+                    placeholder="e.g. parent@gmail.com"
+                    className={`w-full bg-gray-50 border text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#003262] py-2.5 px-3 rounded-none ${fieldErrors.email ? 'border-red-500' : 'border-gray-300'}`}
+                    required
+                  />
+                  {fieldErrors.email && <span className="text-red-500 text-[11px]">{fieldErrors.email}</span>}
                 </div>
               </div>
 

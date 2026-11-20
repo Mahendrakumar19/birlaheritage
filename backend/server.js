@@ -116,7 +116,7 @@ app.get('/', (req, res) => {
     },
     contactStatuses:   ['new', 'read', 'replied', 'archived'],
     admissionStatuses: ['new', 'under_review', 'accepted', 'rejected', 'archived'],
-    grades:            ['nursery', 'lkg', 'ukg', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+    grades:            ['Nursery', 'JKG', 'SKG', 'Class I', 'Class II', 'Class III', 'Class IV', 'Class V', 'Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X', 'Class XI', 'Class XII'],
   });
 });
 

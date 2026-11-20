@@ -1,11 +1,50 @@
 const { z } = require('zod');
 
-const GRADES = [
-  'nursery',
-  'lkg',
-  'ukg',
-  '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
-];
+const GRADE_NORMALIZATION_MAP = {
+  nursery: 'Nursery',
+  jkg: 'JKG',
+  lkg: 'JKG', // map legacy LKG to JKG
+  skg: 'SKG',
+  ukg: 'SKG', // map legacy UKG to SKG
+  '1': 'Class I',
+  '2': 'Class II',
+  '3': 'Class III',
+  '4': 'Class IV',
+  '5': 'Class V',
+  '6': 'Class VI',
+  '7': 'Class VII',
+  '8': 'Class VIII',
+  '9': 'Class IX',
+  '10': 'Class X',
+  '11': 'Class XI',
+  '12': 'Class XII',
+  i: 'Class I',
+  ii: 'Class II',
+  iii: 'Class III',
+  iv: 'Class IV',
+  v: 'Class V',
+  vi: 'Class VI',
+  vii: 'Class VII',
+  viii: 'Class VIII',
+  ix: 'Class IX',
+  x: 'Class X',
+  xi: 'Class XI',
+  xii: 'Class XII',
+  'class i': 'Class I',
+  'class ii': 'Class II',
+  'class iii': 'Class III',
+  'class iv': 'Class IV',
+  'class v': 'Class V',
+  'class vi': 'Class VI',
+  'class vii': 'Class VII',
+  'class viii': 'Class VIII',
+  'class ix': 'Class IX',
+  'class x': 'Class X',
+  'class xi': 'Class XI',
+  'class xii': 'Class XII',
+};
+
+const ALLOWED_GRADE_INPUTS = Object.keys(GRADE_NORMALIZATION_MAP);
 
 const COUNTRIES = ['india', 'other'];
 
@@ -36,9 +75,14 @@ const admissionSchema = z
       .transform(digitsOnly)
       .refine((v) => v.length === 12, 'Aadhaar must be exactly 12 digits'),
 
-    grade: z.enum(GRADES, {
-      errorMap: () => ({ message: `Please select a valid grade (nursery, lkg, ukg, 1–12)` }),
-    }),
+    grade: z
+      .string({ required_error: 'Grade / Class is required' })
+      .trim()
+      .transform((val) => val.toLowerCase())
+      .refine((val) => ALLOWED_GRADE_INPUTS.includes(val), {
+        message: 'Please select a valid grade (Nursery, JKG, SKG, Class I to Class XII)',
+      })
+      .transform((val) => GRADE_NORMALIZATION_MAP[val]),
 
     parentGuardianName: z
       .string({ required_error: 'Parent/Guardian name is required' })
@@ -137,6 +181,10 @@ const admissionSchema = z
 
 module.exports = {
   admissionSchema,
-  GRADES,
+  GRADES: [
+    'Nursery', 'JKG', 'SKG',
+    'Class I', 'Class II', 'Class III', 'Class IV', 'Class V',
+    'Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X', 'Class XI', 'Class XII',
+  ],
   COUNTRIES,
 };
