@@ -8,28 +8,28 @@ import Footer from "@/components/layout/Footer";
 const academicStages = [
   {
     stage: "Pre-Primary Stage",
-    grades: "Nursery, L.K.G & U.K.G",
+    grades: "Nursery, JKG & SKG",
     eyebrow: "Early Childhood Education",
     desc: "Focuses on foundational literacy, numeracy, and sensory development in a nurturing, play-based environment designed to cultivate curiosity and social skills.",
     highlights: ["Foundational Numeracy & Literacy", "Interactive Play-Based Learning", "Social & Emotional Well-Being"],
   },
   {
     stage: "Primary Stage",
-    grades: "Classes 1 to 5",
+    grades: "Class I to Class V",
     eyebrow: "Foundational Academics",
     desc: "Builds core competence across Languages, Mathematics, Science, and Environmental Studies through student-centric inquiry and interactive discovery.",
     highlights: ["Core Conceptual Mastery", "Reading & Expression", "Environmental Awareness"],
   },
   {
     stage: "Middle School Stage",
-    grades: "Classes 6 to 8",
+    grades: "Class VI to Class VIII",
     eyebrow: "Analytical & Skill Development",
     desc: "Introduces specialized academic subjects, encouraging analytical thinking, structured problem solving, and group collaboration.",
     highlights: ["Specialized Subject Learning", "Analytical Reasoning", "Co-Curricular Integration"],
   },
   {
     stage: "Secondary Stage",
-    grades: "Class 9",
+    grades: "Class IX & Class X",
     eyebrow: "Secondary Foundations",
     desc: "Emphasizes subject specialization, deep conceptual understanding, and academic readiness across core disciplines.",
     highlights: ["Subject Specialization", "Critical Thinking", "Academic Mentorship"],

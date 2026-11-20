@@ -49,12 +49,15 @@ app.use(
 app.use(express.json({ limit: '100kb' }));
 app.use(express.urlencoded({ extended: true, limit: '100kb' }));
 
-// Serve uploaded gallery images
+// Serve uploaded gallery images with long-term cache
 app.use(
   '/uploads',
   express.static(path.join(__dirname, 'data', 'uploads'), {
-    maxAge: '7d',
-    immutable: false,
+    maxAge: '30d',
+    immutable: true,
+    setHeaders: (res) => {
+      res.setHeader('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
+    },
   })
 );
 
